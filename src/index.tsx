@@ -5,7 +5,7 @@ import Root from './Root.tsx'
 import { initGA } from './utils/analytics';
 
 
-if (process.env.VERCEL_ENV === 'production') {
+if (import.meta.env.VITE_VERCEL_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
 } else {

@@ -6,7 +6,7 @@ import { useActionState } from 'react';
 import '../styles/SignUp.css'
 import Footer from "./Footer";
 
-const backendURL = process.env.REACT_APP_BACKEND_URL;
+const backendURL = import.meta.env.VITE_BASE_PATH || process.env.REACT_APP_BACKEND_URL;
 
 type FormState = {
     loading: boolean;

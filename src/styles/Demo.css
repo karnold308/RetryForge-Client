@@ -36,7 +36,9 @@
   grid-template-columns: 1.1fr 0.9fr;
   gap: 64px;
   align-items: center;
+  max-width: 1200px;
   padding: 100px 0 80px;
+  margin: auto;
 }
 
 .demo-hero-left {
@@ -284,6 +286,8 @@
 
 .demo-section {
   padding: 100px 0;
+  margin: auto;
+  max-width: 1200px;
 }
 
 .demo-muted {
@@ -453,6 +457,9 @@
     #0F172A;
   color: white;
   text-align: center;
+  max-width: 1200px;
+  margin: auto;
+  border-radius: 32px;
 }
 
 .demo-final-cta h2 {
@@ -506,6 +513,7 @@
     grid-template-columns: 1fr;
     gap: 48px;
     padding: 72px 0 56px;
+    margin: auto;
   }
 
   .demo-hero-left {
@@ -528,6 +536,7 @@
 @media (max-width: 640px) {
   .demo-hero {
     padding: 56px 0 40px;
+    margin: auto;
   }
 
   .demo-hero h1 {

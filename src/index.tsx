@@ -9,7 +9,7 @@ if (import.meta.env.VITE_VERCEL_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
 } else {
-  console.log(process.env.VERCEL_ENV)
+  console.log(import.meta.env.VITE_VERCEL_ENV)
 }
 
 createRoot(document.getElementById('root')!).render(

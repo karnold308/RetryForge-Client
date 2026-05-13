@@ -28,6 +28,8 @@ async function submitAction(
     const pwd = formData.get("password") as string;
     
 
+
+    console.log('backend url' + backendURL)
     if (!email) {
         return {loading: false, message: "Email is required", success: false, 
             data: {company: company, email: email, pwd: pwd}};

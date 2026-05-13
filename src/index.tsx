@@ -5,7 +5,7 @@ import Root from './Root.tsx'
 import { initGA } from './utils/analytics';
 
 
-if (import.meta.env.NODE_ENV === 'production') {
+if (process.env.REACT_APP_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
 } else {

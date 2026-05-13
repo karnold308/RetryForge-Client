@@ -8,6 +8,8 @@ import { initGA } from './utils/analytics';
 if (import.meta.env.NODE_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
+} else {
+  console.log("no node_env = production set")
 }
 
 createRoot(document.getElementById('root')!).render(

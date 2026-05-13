@@ -5,11 +5,11 @@ import Root from './Root.tsx'
 import { initGA } from './utils/analytics';
 
 
-if (process.env.VERCEL_URL === 'production') {
+if (process.env.VITE_VERCEL_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
 } else {
-  console.log(process.env.VERCEL_URL)
+  console.log(process.env.VITE_VERCEL_ENV)
 }
 
 createRoot(document.getElementById('root')!).render(

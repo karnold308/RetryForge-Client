@@ -29,13 +29,12 @@ async function submitAction(
     
 
 
-    console.log('backend url' + backendURL)
-    if (!email) {
+    if (!email.trim()) {
         return {loading: false, message: "Email is required", success: false, 
             data: {company: company, email: email, pwd: pwd}};
     }
 
-    if (!pwd) {
+    if (!pwd.trim()) {
         return {loading: false, message: "Password is required", success: false, 
             data: {company: company, email: email, pwd: pwd}};
     }

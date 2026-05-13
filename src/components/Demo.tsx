@@ -37,7 +37,9 @@ export default function Demo() {
                             Stripe integration, and expected ROI.
                         </p>
 
-                        <button>Schedule Demo</button>
+                        <a href="/signup" className="demo-btn-primary">
+                            Schedule Demo
+                        </a>
                     </div>
 
                     <div className="demo-hero-right">

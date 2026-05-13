@@ -6,6 +6,8 @@ import { useActionState } from 'react';
 import '../styles/SignUp.css'
 import Footer from "./Footer";
 
+const backendURL = process.env.REACT_APP_BACKEND_URL;
+
 type FormState = {
     loading: boolean;
     message: string;
@@ -36,7 +38,7 @@ async function submitAction(
             data: {company: company, email: email, pwd: pwd}};
     }
     try {
-        const response = await fetch("http://localhost:3500/register", {
+        const response = await fetch(`${backendURL}/register`, {
             method: "POST",
             body: JSON.stringify({company, email, pwd}),
             headers: {'Content-Type': 'application/json'}

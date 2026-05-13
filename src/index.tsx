@@ -8,8 +8,6 @@ import { initGA } from './utils/analytics';
 if (process.env.REACT_APP_ENV === 'production') {
   // Initialize Google Analytics
   initGA();
-} else {
-  console.log("no node_env = production set")
 }
 
 createRoot(document.getElementById('root')!).render(

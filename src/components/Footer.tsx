@@ -27,7 +27,7 @@ export default function Footer() {
                         Revenue recovery infrastructure for SaaS companies using Stripe.
                     </p>
                     <p className="footer-copyright">
-                        © 2026 RetryForge. All rights reserved.
+                        2026 RetryForge. All rights reserved.
                     </p>
                 </div>
 

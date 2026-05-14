@@ -51,8 +51,12 @@ export default function Solution() {
 
             </div>
             {/* right column */}
+
             <div className="gap-12 grid items-center border border-gray-200 rounded-2xl shadow-lg">
                 <div>
+                    <div>
+                        <span>Early beta preview</span>
+                    </div>
                     <img
                         src="/dashboard_mockup_2.png"
                         alt="RetryForge dashboard real time"

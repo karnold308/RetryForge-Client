@@ -1,12 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import PrivacyPolicy from "./components/PrivacyPolicy";
-import NoMatch from "./components/404";
-import Dashboard from "./components/Dashboard";
-import Demo from "./components/Demo";
-import SignUp from "./components/SignUp";
-import TermsAndConditions from "./components/Terms";
+import PrivacyPolicy from "./components/pages/PrivacyPolicy";
+import NoMatch from "./components/pages/404";
+import Dashboard from "./components/pages/Dashboard";
+import Demo from "./components/pages/Demo";
+import SignUp from "./components/pages/SignUp";
+import TermsAndConditions from "./components/pages/Terms";
 import App from "./App";
-import Cookies from "./components/Cookies";
+import Cookies from "./components/pages/Cookies";
 
 
 

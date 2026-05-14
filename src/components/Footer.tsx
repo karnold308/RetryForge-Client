@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "../styles/Footer.css";
 
 
 export default function Footer() {
@@ -44,6 +45,7 @@ export default function Footer() {
                     <div className="footer-column">
                         <h4>Company</h4>
                         <a href="/demo">Book a Demo</a>
+                        <a href="/singup">Sign Up</a>
                         <a
                             href="mailto:support@retryforge.com"
                             className="text-indigo-600 hover:text-indigo-700"

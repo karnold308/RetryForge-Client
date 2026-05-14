@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { trackPageView } from '../utils/analytics';
-import Footer from "./Footer";
-import "../styles/Demo.css";
+import { trackPageView } from '../../utils/analytics';
+import Footer from "../Footer";
+import "../../styles/Demo.css";
+import ScrollToTopBtn from "../ScrollToTop";
 
 export default function Demo() {
     const location = useLocation();
@@ -279,10 +280,7 @@ export default function Demo() {
                 </section>
 
             </main>
-
-
-
-
+            <ScrollToTopBtn />
             <Footer />
         </>
     )

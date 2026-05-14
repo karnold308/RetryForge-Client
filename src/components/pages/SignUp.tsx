@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { trackPageView } from '../utils/analytics';
+import { trackPageView } from '../../utils/analytics';
 import { useActionState } from 'react';
-import '../styles/SignUp.css'
-import Footer from "./Footer";
+import '../../styles/SignUp.css'
+import Footer from "../Footer";
+import ScrollToTopBtn from "../ScrollToTop";
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -202,6 +203,7 @@ export default function SignUp() {
                     </div>
                 </section>
             </main>
+            <ScrollToTopBtn />
             <Footer />
         </>
     )

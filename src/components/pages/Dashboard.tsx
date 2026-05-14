@@ -1,3 +1,6 @@
+import "../../styles/Dashboard.css";
+
+
 import {
     ResponsiveContainer,
     LineChart,
@@ -7,7 +10,6 @@ import {
     YAxis,
     Tooltip,
 } from "recharts";
-import '../styles/Dashboard.css'
 
 export default function Dashboard() {
     const failedPayments = [

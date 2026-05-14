@@ -4,28 +4,28 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false);
 
     const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
+    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
 
-useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-        const target = event.target as Node;
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const target = event.target as Node;
 
-        if (
-            mobileMenuRef.current &&
-            !mobileMenuRef.current.contains(target) &&
-            mobileButtonRef.current &&
-            !mobileButtonRef.current.contains(target)
-        ) {
-            setMobileOpen(false);
+            if (
+                mobileMenuRef.current &&
+                !mobileMenuRef.current.contains(target) &&
+                mobileButtonRef.current &&
+                !mobileButtonRef.current.contains(target)
+            ) {
+                setMobileOpen(false);
+            }
         }
-    }
 
-    document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
 
-    return () => {
-        document.removeEventListener("mousedown", handleClickOutside);
-    };
-}, []);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <header>

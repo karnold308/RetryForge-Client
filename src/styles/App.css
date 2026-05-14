@@ -28,30 +28,6 @@ header {
 
 }
 
-.btn-visible {
-    display: block;
-    position: fixed;
-    z-index: 999;
-    width: 45px;
-    height: 45px;
-    right: 30px;
-    bottom: 30px;
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-    box-shadow: 3px 3px 10px rgba(23, 25, 25, 0.2);
-    transition: transform 0.3s ease-in-out;
-    background-image: url('https://api.iconify.design/material-symbols/arrow-upward.svg?color=%23626262');
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: contain;
-    cursor: pointer;
-}
-
-.btn-hidden {
-    display: none;
-}
-
 nav {
     display: flex;
     align-items: center;
@@ -62,8 +38,6 @@ nav {
 main {
     padding: 0 30px 60px 30px;
 }
-
-
 
 h1 {
     font-size: 42px;
@@ -323,55 +297,8 @@ section {
 }
 
 
-
-.chart-bars {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.revenueChart {
-    margin-top: 28px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.revenueBar {
-    height: 38px;
-    border-radius: 999px;
-    display: flex;
-    align-items: center;
-    padding-left: 14px;
-    font-size: 14px;
-    font-weight: 600;
-    color: white;
-    transition: width 0.4s ease;
-}
-
-.lostBar {
-    background: #9CA3AF;
-}
-
-.recoveredBar {
-    background: #10B981;
-}
-
-.profitBar {
-    background: #111827;
-}
-
 .cust-plan-btn {
     margin-bottom: 20px;
-}
-
-.chart-legend {
-    margin-top: 18px;
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    font-size: 13px;
-    color: #6B7280;
 }
 
 
@@ -412,41 +339,11 @@ section {
     color: #6B7280;
 }
 
-.miniMetric {
-    padding: 18px;
-    transition: all 0.2s ease;
-    background: white;
-}
-
-.miniMetric:hover {
-    transform: translateY(-2px);
-    border-color: #D1D5DB;
-}
-
-.miniMetric span {
-    display: block;
-    font-size: 13px;
-    color: #6B7280;
-    margin-bottom: 8px;
-}
-
-.miniMetric strong {
-    display: block;
-    font-size: 22px;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
-    color: #111827;
-}
-
-.miniMetric,
-.calc-stat,
 .heroProfitCard {
     min-width: 0;
     overflow: hidden;
 }
 
-.miniMetric strong,
-.calc-stat strong,
 .heroProfitCard strong {
     overflow-wrap: break-word;
     word-break: break-word;
@@ -477,51 +374,6 @@ section {
 .calcMMRSlider,
 .calcFaileRateSlider {
     display: flex;
-}
-
-.net-gain-card {
-    padding: 28px;
-    background: linear-gradient(to bottom right,
-            rgba(16, 185, 129, 0.12),
-            rgba(16, 185, 129, 0.03));
-    border: 1px solid rgba(16, 185, 129, 0.25);
-}
-
-.net-gain-value {
-    font-weight: 800;
-    font-size: clamp(42px, 5vw, 64px);
-    line-height: 1;
-}
-
-
-.calc-results {
-    margin-top: 28px;
-    display: grid;
-    gap: 16px;
-}
-
-.calc-stat {
-    padding: 18px;
-    border: 1px solid #E5E7EB;
-    border-radius: 14px;
-    background: #F9FAFB;
-}
-
-.calc-stat strong {
-    display: block;
-    font-size: 28px;
-    margin-top: 6px;
-}
-
-.greenGain {
-    color: #10B981;
-    font-size: 28px;
-    font-weight: 700;
-    margin-top: 12px;
-}
-
-.redGain {
-    color: red;
 }
 
 #features {
@@ -607,20 +459,15 @@ section {
     line-height: 0.95;
     letter-spacing: -3px;
     font-weight: 800;
-
     color: #111827;
-
     margin: 14px 0 18px;
-
     overflow-wrap: anywhere;
     word-break: break-word;
 }
 
 .lossValue span {
     display: inline-block;
-
     font-size: clamp(18px, 4vw, 28px);
-
     letter-spacing: -0.5px;
     color: #6B7280;
     font-weight: 600;
@@ -706,19 +553,13 @@ input[type="text"]:focus {
     display: flex;
     align-items: center;
     gap: 8px;
-
     padding: 8px 12px;
-
     background: rgba(255, 255, 255, 0.7);
-
     border: 1px solid #E5E7EB;
     border-radius: 999px;
-
     font-size: 13px;
     font-weight: 500;
-
     color: #4B5563;
-
     backdrop-filter: blur(10px);
 }
 
@@ -727,7 +568,6 @@ input[type="text"]:focus {
     height: 8px;
     border-radius: 999px;
     background: #10B981;
-
     box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.12);
 }
 
@@ -814,9 +654,6 @@ input[type="text"]:focus {
     display: none;
 }
 
-
-
-
 .howItWorks-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04),
@@ -899,7 +736,6 @@ input[type="text"]:focus {
 .comparisonSection {
     background: #F9FAFB;
     padding-top: 30px;
-
     background-size: 24px 24px;
 }
 
@@ -955,7 +791,6 @@ input[type="text"]:focus {
     top: 50%;
     left: 50%;
     z-index: 20;
-
     transform: translate(-50%, -50%);
 }
 
@@ -979,13 +814,11 @@ input[type="text"]:focus {
     color: #6B7280;
 }
 
-
 .our-card {
     border-radius: 18px;
     padding: 28px;
     position: relative;
     overflow: hidden;
-
 }
 
 .our-card::before {
@@ -994,7 +827,6 @@ input[type="text"]:focus {
     inset: 0;
     padding: 1px;
     border-radius: inherit;
-
     background:
         linear-gradient(135deg,
             rgba(99, 102, 241, .4),
@@ -1011,7 +843,6 @@ input[type="text"]:focus {
 .our-card:hover {
     transform: translateY(-4px);
 }
-
 
 .stripe-card {
     background: white;
@@ -1073,86 +904,6 @@ input[type="text"]:focus {
     gap: 16px;
     padding: 16px 0;
     border-top: 1px solid #F3F4F6;
-}
-
-.footer {
-    border-top: 1px solid #E5E7EB;
-    background: #FFFFFF;
-    margin-top: 120px;
-}
-
-.footer-container {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 72px 32px;
-    display: flex;
-    justify-content: space-between;
-    gap: 48px;
-    box-sizing: border-box;
-}
-
-.footer-brand {
-    max-width: 320px;
-}
-
-.footer-logo-row {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 18px;
-}
-
-.footer-logo {
-    width: 36px;
-    height: 36px;
-}
-
-.footer-brand-name {
-    font-size: 20px;
-    font-weight: 700;
-    color: #111827;
-}
-
-.footer-description {
-    font-size: 15px;
-    line-height: 1.7;
-    color: #6B7280;
-    margin-bottom: 24px;
-}
-
-.footer-copyright {
-    font-size: 14px;
-    color: #9CA3AF;
-}
-
-.footer-links {
-    display: flex;
-    gap: 72px;
-}
-
-.footer-column {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-}
-
-.footer-column h4 {
-    font-size: 14px;
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 8px;
-}
-
-.footer-column a {
-    font-size: 15px;
-    color: #6B7280;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer-column a:hover {
-    color: #111827;
 }
 
 .final-cta-subtitle {
@@ -1317,228 +1068,6 @@ input[type="text"]:focus {
     font-size: 15px;
     line-height: 1.75;
     color: #6B7280;
-}
-
-
-.pricing-note {
-    padding-top: 20px;
-}
-
-
-.privacy-policy-page {
-    min-height: 100vh;
-    padding: 80px 24px;
-}
-
-.privacy-policy-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.privacy-policy-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 28px;
-    padding: 56px;
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.04);
-}
-
-.privacy-policy-title {
-    font-size: 52px;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 12px;
-}
-
-.privacy-policy-updated {
-    font-size: 15px;
-    color: #6B7280;
-    margin-bottom: 48px;
-}
-
-.privacy-policy-content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-}
-
-.privacy-policy-content section {
-    border-top: 1px solid #F3F4F6;
-    padding-top: 40px;
-}
-
-.privacy-policy-content section:first-child {
-    border-top: none;
-    padding-top: 0;
-}
-
-.privacy-policy-content h2 {
-    font-size: 30px;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 18px;
-}
-
-.privacy-policy-content h3 {
-    font-size: 20px;
-    font-weight: 600;
-    color: #111827;
-    margin-top: 32px;
-    margin-bottom: 12px;
-}
-
-.privacy-policy-content p {
-    font-size: 16px;
-    line-height: 1.85;
-    color: #4B5563;
-    margin-bottom: 18px;
-}
-
-.privacy-policy-content ul {
-    padding-left: 24px;
-    margin-top: 18px;
-    margin-bottom: 18px;
-}
-
-.privacy-policy-content li {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #4B5563;
-    margin-bottom: 10px;
-}
-
-.privacy-policy-content strong {
-    color: #111827;
-}
-
-.privacy-policy-content a {
-    color: #4F46E5;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.privacy-policy-content a:hover {
-    color: #4338CA;
-}
-
-.privacy-contact {
-    margin-top: 18px;
-}
-
-.privacy-contact-name {
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 8px;
-}
-
-.terms-page {
-    min-height: 100vh;
-    padding: 80px 24px;
-}
-
-.terms-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.terms-card {
-    background: #FFFFFF;
-    border: 1px solid #E5E7EB;
-    border-radius: 28px;
-    padding: 56px;
-    box-shadow:
-        0 1px 2px rgba(0, 0, 0, 0.04),
-        0 12px 24px rgba(0, 0, 0, 0.04);
-}
-
-.terms-title {
-    font-size: 52px;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 12px;
-}
-
-.terms-updated {
-    font-size: 15px;
-    color: #6B7280;
-    margin-bottom: 48px;
-}
-
-.terms-content {
-    display: flex;
-    flex-direction: column;
-    gap: 48px;
-}
-
-.terms-content section {
-    border-top: 1px solid #F3F4F6;
-    padding-top: 40px;
-}
-
-.terms-content section:first-child {
-    border-top: none;
-    padding-top: 0;
-}
-
-.terms-content h2 {
-    font-size: 30px;
-    line-height: 1.1;
-    letter-spacing: -1px;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 18px;
-}
-
-.terms-content p {
-    font-size: 16px;
-    line-height: 1.85;
-    color: #4B5563;
-    margin-bottom: 18px;
-}
-
-.terms-content ul {
-    padding-left: 24px;
-    margin-top: 18px;
-    margin-bottom: 18px;
-}
-
-.terms-content li {
-    font-size: 16px;
-    line-height: 1.8;
-    color: #4B5563;
-    margin-bottom: 10px;
-}
-
-.terms-content a {
-    color: #4F46E5;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.terms-content a:hover {
-    color: #4338CA;
-}
-
-.terms-contact {
-    margin-top: 18px;
-}
-
-.terms-contact-name {
-    font-weight: 600;
-    color: #111827;
-    margin-bottom: 8px;
-}
-
-.terms-contact-link {
-    color: #4F46E5;
 }
 
 .recoveryFlow {
@@ -1722,10 +1251,6 @@ input[type="text"]:focus {
         grid-template-columns: 1fr;
     }
 
-    .calc-stat strong {
-        font-size: 20px
-    }
-
     .howItWorks-cards {
         grid-template-columns: 1fr;
         margin-top: 24px
@@ -1768,18 +1293,6 @@ input[type="text"]:focus {
         margin-top: 8px;
     }
 
-    .footer-container {
-        flex-direction: column;
-        gap: 48px;
-        padding: 56px 20px;
-    }
-
-    .footer-links {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-    }
-
     .problem-card,
     .howItWorks-card,
     .pricing-card {
@@ -1813,55 +1326,7 @@ input[type="text"]:focus {
         font-size: 16px;
     }
 
-    .privacy-policy-page {
-        padding: 48px 20px;
-    }
-
-    .privacy-policy-card {
-        padding: 32px 24px;
-        border-radius: 22px;
-    }
-
-    .privacy-policy-title {
-        font-size: 40px;
-    }
-
-    .privacy-policy-content h2 {
-        font-size: 26px;
-    }
-
-    .privacy-policy-content h3 {
-        font-size: 18px;
-    }
-
-    .privacy-policy-content p,
-    .privacy-policy-content li {
-        font-size: 15px;
-        line-height: 1.75;
-    }
-
-    .terms-page {
-        padding: 48px 20px;
-    }
-
-    .terms-card {
-        padding: 32px 24px;
-        border-radius: 22px;
-    }
-
-    .terms-title {
-        font-size: 40px;
-    }
-
-    .terms-content h2 {
-        font-size: 26px;
-    }
-
-    .terms-content p,
-    .terms-content li {
-        font-size: 15px;
-        line-height: 1.75;
-    }
+    
 
     .recoveryFlow {
         padding: 70px 0;

@@ -1,10 +1,36 @@
-import { useState } from "react";
-import Footer from "./Footer";
-import "../styles/Cookies.css"
+import { useState, useEffect, useRef } from "react";
+import Footer from "../Footer";
+import "../../styles/Cookies.css"
+import ScrollToTopBtn from "../ScrollToTop";
 
 
 export default function Cookies() {
     const [mobileOpen, setMobileOpen] = useState(false);
+
+    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const target = event.target as Node;
+
+            if (
+                mobileMenuRef.current &&
+                !mobileMenuRef.current.contains(target) &&
+                mobileButtonRef.current &&
+                !mobileButtonRef.current.contains(target)
+            ) {
+                setMobileOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
 
     return (
         <>
@@ -25,6 +51,7 @@ export default function Cookies() {
 
                     {/* Mobile Hamburger */}
                     <button
+                        ref={mobileButtonRef}
                         type="button"
                         className="mobile-menu-btn"
                         onClick={() => setMobileOpen(!mobileOpen)}>
@@ -35,7 +62,7 @@ export default function Cookies() {
                 {/* Mobile Dropdown */}
 
                 {mobileOpen && (
-                    <div className="mobile-menu">
+                    <div className="mobile-menu" ref={mobileMenuRef}>
                         <a href="/demo">Book a Demo</a>
                         <a href="/signup" className="nav-btn-primary">Get Started</a>
                     </div>
@@ -145,6 +172,7 @@ export default function Cookies() {
                     </div>
                 </section>
             </main>
+            <ScrollToTopBtn />
             <Footer />
         </>
     )

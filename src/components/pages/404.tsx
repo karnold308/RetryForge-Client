@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { trackPageView } from '../utils/analytics';
-import Footer from "./Footer";
-import '../styles/404.css'
+import { trackPageView } from '../../utils/analytics';
+import Footer from "../Footer";
+import '../../styles/404.css'
 
 export default function NoMatch() {
     const location = useLocation();

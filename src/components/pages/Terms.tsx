@@ -1,13 +1,38 @@
-import { useEffect } from 'react';
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from 'react-router-dom';
-import { trackPageView } from '../utils/analytics';
-import { useState } from "react";
-import Footer from "./Footer";
+import { trackPageView } from '../../utils/analytics';
+import Footer from "../Footer";
+import "../../styles/Terms.css";
+import ScrollToTopBtn from '../ScrollToTop';
 
 
 export default function TermsAndConditions() {
     const [mobileOpen, setMobileOpen] = useState(false);
     const location = useLocation();
+
+    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
+    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            const target = event.target as Node;
+
+            if (
+                mobileMenuRef.current &&
+                !mobileMenuRef.current.contains(target) &&
+                mobileButtonRef.current &&
+                !mobileButtonRef.current.contains(target)
+            ) {
+                setMobileOpen(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     useEffect(() => {
         // Track page view on route change
@@ -33,6 +58,7 @@ export default function TermsAndConditions() {
 
                     {/* Mobile Hamburger */}
                     <button
+                        ref={mobileButtonRef}
                         type="button"
                         className="mobile-menu-btn"
                         onClick={() => setMobileOpen(!mobileOpen)}>
@@ -43,7 +69,7 @@ export default function TermsAndConditions() {
                 {/* Mobile Dropdown */}
 
                 {mobileOpen && (
-                    <div className="mobile-menu">
+                    <div className="mobile-menu" ref={mobileMenuRef}>
                         <a href="/demo">Book a Demo</a>
                         <a href="/signup" className="nav-btn-primary">Get Started</a>
                     </div>
@@ -331,6 +357,7 @@ export default function TermsAndConditions() {
                     </div>
                 </div>
             </main>
+            <ScrollToTopBtn />
             <Footer />
         </>
     )

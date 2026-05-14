@@ -921,6 +921,8 @@ input[type="text"]:focus {
     padding: 70px 0;
     text-align: center;
     overflow: hidden;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .final-cta-btn {
@@ -1375,6 +1377,7 @@ input[type="text"]:focus {
 
     .final-cta {
         padding: 70px 10px;
+        margin: auto;
     }
 }
 

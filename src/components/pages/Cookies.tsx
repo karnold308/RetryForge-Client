@@ -1,73 +1,15 @@
-import { useState, useEffect, useRef } from "react";
 import Footer from "../Footer";
 import "../../styles/Cookies.css"
 import ScrollToTopBtn from "../ScrollToTop";
+import Navbar from "../Navbar";
 
 
 export default function Cookies() {
-    const [mobileOpen, setMobileOpen] = useState(false);
-
-    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
-            const target = event.target as Node;
-
-            if (
-                mobileMenuRef.current &&
-                !mobileMenuRef.current.contains(target) &&
-                mobileButtonRef.current &&
-                !mobileButtonRef.current.contains(target)
-            ) {
-                setMobileOpen(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
-
 
     return (
         <>
-            <title>Privacy Policy</title>
-            <header>
-                <title>RetryForge - Cookie Policy</title>
-                <nav className="navbar">
-                    <a href="/" className="logo">
-                        <img className="headerLogo" loading="lazy" src="/letter_mark_white_bg.png" />
-                    </a>
-
-                    <div className="nav-links desktop-nav">
-                        <a href="/demo" className="nav-btn-secondary">Book Demo</a>
-                        {/* <a href="/login" className="nav-btn-secondary">Login</a> */}
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-
-
-                    {/* Mobile Hamburger */}
-                    <button
-                        ref={mobileButtonRef}
-                        type="button"
-                        className="mobile-menu-btn"
-                        onClick={() => setMobileOpen(!mobileOpen)}>
-                        ☰
-                    </button>
-                </nav>
-
-                {/* Mobile Dropdown */}
-
-                {mobileOpen && (
-                    <div className="mobile-menu" ref={mobileMenuRef}>
-                        <a href="/demo">Book a Demo</a>
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-                )}
-            </header>
+            <title>RetryForge - Cookie Policy</title>
+            <Navbar />
             <main className="cookie-policy-page">
                 <section className="cookie-policy-hero">
                     <div className="cookie-policy-container">

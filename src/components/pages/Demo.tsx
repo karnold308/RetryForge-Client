@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
+import ScrollToTopBtn from "../ScrollToTop";
 import Footer from "../Footer";
 import "../../styles/Demo.css";
-import ScrollToTopBtn from "../ScrollToTop";
+
+import Navbar from "../Navbar";
 
 export default function Demo() {
     const location = useLocation();
@@ -17,13 +18,10 @@ export default function Demo() {
 
     return (
         <>
+            <title>RetryForge - Demo</title>
+            <Navbar />
             <main className="demo-page">
-                <title>RetryForge - Demo</title>
-                <header className="demo-header">
-                    <Link to="/" className="demo-logo">
-                        <img className="demo-header-logo" loading="lazy" src="/letter_mark_white_bg.png" />
-                    </Link>
-                </header>
+                
                 {/* HERO */}
                 <section className="demo-hero">
                     <div className="demo-hero-left">

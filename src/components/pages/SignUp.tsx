@@ -6,6 +6,7 @@ import { useActionState } from 'react';
 import '../../styles/SignUp.css'
 import Footer from "../Footer";
 import ScrollToTopBtn from "../ScrollToTop";
+import Navbar from "../Navbar";
 
 const backendURL = import.meta.env.VITE_BACKEND_URL;
 
@@ -27,8 +28,6 @@ async function submitAction(
     const email = formData.get("email") as string;
     const company = formData.get("company") as string;
     const pwd = formData.get("password") as string;
-    
-
 
     if (!email.trim()) {
         return {loading: false, message: "Email is required", success: false, 
@@ -90,22 +89,9 @@ export default function SignUp() {
 
     return (
         <>
+            <title>RetryForge - Sign Up</title>
+            <Navbar />
             <main className="signup-page">
-                <title>RetryForge - Sign Up</title>
-                <header className="signup-header">
-                    <Link to="/" className="signup-logo">
-                        <img className="signup-header-logo" loading="lazy" src="/letter_mark_white_bg.png"/>
-                    </Link>
-                    {/* 
-                    <div className="signup-header-links">
-                        <span>Already have an account?</span>
-
-                        <Link to="/login" className="signup-login-link">
-                            Sign in
-                        </Link>
-                    </div>
-                    */}
-                </header>
                 <section className="signup-layout">
                     {/* LEFT SIDE */}
                     <div className="signup-card">

@@ -16,8 +16,9 @@ export default function MainPricing() {
 
                 <div className="pricing-card">
                     <div className="pricing-plan">
-                        Starter
+                        Pilot Pricing
                     </div>
+                    { /* 
                     <div className="pricing-price-row">
                         <span className="pricing-price">
                             $49
@@ -30,6 +31,8 @@ export default function MainPricing() {
                         + 5% of recovered revenue.
                     </p>
                     <p>Most customers recover their first failed invoice within days, often covering the cost of our platform.</p>
+                    */ }
+                    <p>Founding pilot customers receive discounted pricing and direct onboarding support while RetryForge is in early access.</p>
                     <ul className="pricing-features">
                         <li>Automatic retries</li>
                         <li>Send branded card-update emails before subscriptions cancel.</li>
@@ -38,7 +41,7 @@ export default function MainPricing() {
                     </ul>
 
                     <a href="/signup" className="nav-btn-primary pricing-btn">
-                        Start Recovering Revenue
+                        Request Early Access
                     </a>
                 </div>
                 <p className="pricing-note">

@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../utils/analytics';
 import RecoveryFlow from "./RecoveryFlow"
+import Pilot from "./Pilot"
 
 
 export default function Main() {
@@ -42,6 +43,7 @@ export default function Main() {
             <HowItWorks />
             <RecoveryFlow />
             <Comparisons />
+            <Pilot />
             <MainPricing />
             <FAQ />
             {/* <SocialProof /> */}

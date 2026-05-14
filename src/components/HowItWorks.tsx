@@ -34,8 +34,11 @@ export default function HowItWorks() {
                             <div className="howItWorks-number">1.</div>
                             <h3>&nbsp;Connect Stripe</h3>
                         </div>
+                        {/* 
                         <p>Securely connect your account in seconds. No code changes required.</p>
-                    </div>
+                        */ }
+                        <p>We're currently onboarding a small number of Stripe SaaS companies for hands-on implementation and feedback.</p>
+                        </div>
 
                     <div className="howItWorks-card">
                         <div className="howItWorks-cardTitleDiv">

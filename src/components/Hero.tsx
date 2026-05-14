@@ -6,7 +6,6 @@ export default function Hero() {
             <div className="container px-8 grid md:grid-cols-2 gap-12 items-center">
                 {/* left column */}
                 <div>
-                    {/* Logo */}
                     <div className="flex items-center gap-2 mb-4">
                         {/* <div className="w-10 h-10 rounded-lg bg-green-500 flex items-center justify-center text-white font-bold">
                             RF
@@ -15,6 +14,10 @@ export default function Hero() {
                             {/* RetryForge */}
                             <img alt="RetryForge logo" className="fullLogo" src="/full_logo_with_name_2.png" />
                         </span>
+
+                    </div>
+                    <div className="betaBadge">
+                        Early Access • Looking for pilot Stripe SaaS companies
                     </div>
 
                     {/* Headline */}
@@ -24,7 +27,8 @@ export default function Hero() {
 
                     {/* Subheadline */}
                     <p className="text-lg text-gray-600 mb-8 max-w-lg">
-                        Recover failed Stripe payments automatically before subscriptions churn.
+                         { /* Recover failed Stripe payments automatically before subscriptions churn. */ }
+                         RetryForge is building smarter failed-payment recovery for Stripe SaaS companies. Join the pilot program and help shape the platform. We are currently onboarding 5-10 pilot Stripe SaaS companies.
                     </p>
 
                     {/* CTA */}

@@ -72,7 +72,7 @@ export default function FounderPresence() {
                         </p>
                         <div className="founder-quote">
                             <p>
-                                <strong>Currently onboarding a small number of pilot users</strong>
+                                <strong>Currently onboarding a small number of pilot users </strong>
                                 to help shape the product and recovery workflows.
                             </p>
                         </div>

@@ -39,7 +39,8 @@ export default function Navbar() {
                     <a href="/#features" className="nav-btn-ghost">Features</a>
                     <a href="/#howItWorks" className="nav-btn-ghost">How It Works</a>
                     <a href="/#pricing" className="nav-btn-ghost">Pricing</a>
-                    <a href="/demo" className="nav-btn-primary">Book a Demo</a>
+                    <a href="/signup" className="nav-btn-primary">Join Waiting List</a>
+                    {/* <a href="/demo" className="nav-btn-primary">Book a Demo</a> */}
                     {/* <a href="/login" className="nav-btn-secondary">Login</a> */}
                     {/* <a href="/signup" className="nav-btn-primary">Get Started</a> */}
                 </div>
@@ -62,7 +63,8 @@ export default function Navbar() {
                     <a href="/#features" onClick={() => setMobileOpen(false)}>Features</a>
                     <a href="/#howItWorks" onClick={() => setMobileOpen(false)}>How It Works</a>
                     <a href="/#pricing" onClick={() => setMobileOpen(false)}>Pricing</a>
-                    <a href="/demo" className="nav-btn-primary">Book a Demo</a>
+                    <a href="/demo" className="nav-btn-primary">Join Waiting List</a>
+                    {/* <a href="/demo" className="nav-btn-primary">Book a Demo</a> */}
                     {/* <a href="/signup" className="nav-btn-primary">Get Started</a> */}
                 </div>
             )}

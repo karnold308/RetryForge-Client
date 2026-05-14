@@ -44,7 +44,7 @@ export default function Footer() {
 
                     <div className="footer-column">
                         <h4>Company</h4>
-                        <a href="/demo">Book a Demo</a>
+                        { /* <a href="/demo">Book a Demo</a> */ }
                         <a href="/singup">Sign Up</a>
                         <a
                             href="mailto:support@retryforge.com"

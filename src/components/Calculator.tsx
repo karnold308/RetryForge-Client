@@ -116,7 +116,7 @@ export default function Calculator() {
                             <div className="slider-row">
                                 <span className="slider-min">$5k</span>
                                 <input
-                                    id="mrr" type="range" min={mmrMin} max={mmrMax} step="100" value={inputMMRValue} onChange={handleMMRChange}
+                                    id="mrr" type="range" onMouseUp={() => handleMMRChange} min={mmrMin} max={mmrMax} step="100" value={inputMMRValue} onChange={handleMMRChange}
                                 />
                                 <span className="slider-max">$100k</span>
                             </div>
@@ -129,7 +129,7 @@ export default function Calculator() {
                             <div className="slider-row">
                                 <span className="slider-min">5%</span>
                                 <input
-                                    type="range" min={failMin} max={failMax} step="1" value={inputFailedRate} onChange={handleFailedRateChange}
+                                    type="range" min={failMin} max={failMax} onMouseUp={() => handleFailedRateChange} step="1" value={inputFailedRate} onChange={handleFailedRateChange}
                                 />
                                 <span className="slider-max">15%</span>
                             </div>
@@ -142,7 +142,7 @@ export default function Calculator() {
                             <div className="slider-row">
                                 <span className="slider-min">10%</span>
                                 <input
-                                    type="range" min={recovMin} max={recovMax} step="1" value={inputRecovRate} onChange={handleRecovRateChange}
+                                    type="range" min={recovMin} max={recovMax} step="1" onMouseUp={() => handleRecovRateChange} value={inputRecovRate} onChange={handleRecovRateChange}
                                 />
                                 <span className="slider-max">30%</span>
                             </div>

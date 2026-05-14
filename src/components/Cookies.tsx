@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useLocation } from 'react-router-dom';
+import { useState } from "react";
 import Footer from "./Footer";
 import "../styles/Cookies.css"
 

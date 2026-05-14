@@ -39,6 +39,7 @@ export default function Hero() {
                         <a href="#calculator" className="nav-btn-secondary how-much-losing">See How Much You're Losing</a>
                     </div>
                     <div className="hero-trust-bar">
+                        {/* 
                         <div className="hero-trust-item">
                             <span className="hero-trust-dot"></span>
                             Works with Stripe Billing
@@ -52,6 +53,10 @@ export default function Hero() {
                         <div className="hero-trust-item">
                             <span className="hero-trust-dot"></span>
                             No billing migration required
+                        </div>
+                        */ }
+                        <div className="hero-trust-item">
+                            <span>Founder-led pilot program for SaaS companies using Stripe Billing</span>
                         </div>
                     </div>
                 </div>

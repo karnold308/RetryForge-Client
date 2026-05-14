@@ -12,6 +12,7 @@ import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../utils/analytics';
 import RecoveryFlow from "./RecoveryFlow"
 import Pilot from "./Pilot"
+import FounderPresence from "./FounderPresence"
 
 
 export default function Main() {
@@ -46,6 +47,7 @@ export default function Main() {
             <Pilot />
             <MainPricing />
             <FAQ />
+            <FounderPresence />
             {/* <SocialProof /> */}
             <FinalCall />
         </main>

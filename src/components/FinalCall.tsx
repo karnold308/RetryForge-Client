@@ -9,7 +9,7 @@ export default function FinalCall() {
 
             <a href="/signup" className="nav-btn-primary final-cta-btn"
                 style={{width: "165px"}}>
-                Request Early Access
+                See If RetryForge Is a Fit
             </a>
         </section>
     )

@@ -1335,6 +1335,181 @@ input[type="text"]:focus {
 }
 
 
+.founder-section {
+    padding: 110px 0;
+    background:
+        radial-gradient(
+            circle at top,
+            rgba(99,102,241,0.06),
+            transparent 45%
+        ),
+        #FFFFFF;
+    border-top: 1px solid #E5E7EB;
+}
+
+.founder-container {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 64px;
+    align-items: center;
+    padding: 0 24px;
+}
+
+.founder-card {
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: 28px;
+    padding: 32px;
+    box-shadow:
+        0 1px 2px rgba(0,0,0,0.04),
+        0 18px 40px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.founder-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 999px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid #EEF2FF;
+}
+
+.founder-name {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #111827;
+    margin-bottom: 6px;
+}
+
+.founder-role {
+    font-size: 15px;
+    color: #6B7280;
+    margin-bottom: 24px;
+}
+
+.founder-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    text-align: left;
+}
+
+.founder-meta-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 16px;
+    border-radius: 14px;
+    background: #F9FAFB;
+    border: 1px solid #F3F4F6;
+}
+
+.founder-meta-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    background: rgba(79,70,229,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #4F46E5;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.founder-meta-item strong {
+    display: block;
+    font-size: 14px;
+    color: #111827;
+    margin-bottom: 4px;
+}
+
+.founder-meta-item span {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #6B7280;
+}
+
+.founder-content {
+    max-width: 640px;
+}
+
+.founder-eyebrow {
+    display: inline-flex;
+    padding: 8px 14px;
+    border-radius: 999px;
+    background: rgba(79,70,229,0.08);
+    color: #4338CA;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 22px;
+}
+
+.founder-title {
+    font-size: clamp(38px, 5vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -3px;
+    color: #111827;
+    margin-bottom: 26px;
+}
+
+.founder-content p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #4B5563;
+    margin-bottom: 24px;
+}
+
+.founder-highlight {
+    color: #111827;
+    font-weight: 600;
+}
+
+.founder-quote {
+    margin-top: 34px;
+    padding: 24px 28px;
+    border-left: 4px solid #4F46E5;
+    background:
+        linear-gradient(
+            to right,
+            rgba(79,70,229,0.05),
+            rgba(255,255,255,0)
+        );
+    border-radius: 0 18px 18px 0;
+}
+
+.founder-quote p {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #111827;
+}
+
+.founder-quote strong {
+    color: #4F46E5;
+}
+
+.founder-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 36px;
+    flex-wrap: wrap;
+}
+
+.founder-actions .nav-btn-primary,
+.founder-actions .nav-btn-secondary {
+    min-width: 180px;
+    text-align: center;
+}
+
+
 /* START mobile */
 
 
@@ -1348,6 +1523,32 @@ input[type="text"]:focus {
 .mobile-menu {
     display: none;
     border-bottom: 1px solid #E5E7EB;
+}
+
+@media (max-width: 900px) {
+
+    .founder-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .founder-card {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .founder-content {
+        max-width: 100%;
+    }
+
+    .founder-title {
+        letter-spacing: -2px;
+    }
+
+    .founder-content p {
+        font-size: 17px;
+        line-height: 1.8;
+    }
 }
 
 
@@ -1480,8 +1681,6 @@ input[type="text"]:focus {
         font-size: 16px;
     }
 
-
-
     .recoveryFlow {
         padding: 70px 0;
     }
@@ -1558,6 +1757,36 @@ input[type="text"]:focus {
     .pilotSection .nav-btn-primary {
         width: 100%;
         text-align: center;
+    }
+
+    .founder-section {
+        padding: 80px 0;
+    }
+
+    .founder-card {
+        padding: 24px;
+        border-radius: 22px;
+    }
+
+    .founder-title {
+        font-size: 40px;
+        line-height: 1.05;
+    }
+
+    .founder-actions {
+        flex-direction: column;
+    }
+
+    .founder-actions a {
+        width: 100%;
+    }
+
+    .founder-quote {
+        padding: 20px;
+    }
+
+    .founder-content p {
+        font-size: 16px;
     }
 }
 

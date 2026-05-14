@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from 'react-router-dom';
 import Footer from "./Footer";
 import "../styles/Cookies.css"
 
 
 export default function Cookies() {
     const [mobileOpen, setMobileOpen] = useState(false);
+
     return (
         <>
             <title>Privacy Policy</title>
@@ -35,7 +37,7 @@ export default function Cookies() {
 
                 {mobileOpen && (
                     <div className="mobile-menu">
-                        <a href="/demo">Book Demo</a>
+                        <a href="/demo">Book a Demo</a>
                         <a href="/signup" className="nav-btn-primary">Get Started</a>
                     </div>
                 )}
@@ -132,7 +134,12 @@ export default function Cookies() {
                             </p>
 
                             <p className="cookie-policy-contact">
-                                support@retryforge.com
+                                <a
+                                    href="mailto:support@retryforge.com"
+                                    className="text-indigo-600 hover:text-indigo-700"
+                                >
+                                    support@retryforge.com
+                                </a>
                             </p>
 
                         </div>

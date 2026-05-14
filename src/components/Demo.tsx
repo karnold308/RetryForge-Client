@@ -13,7 +13,7 @@ export default function Demo() {
         const pageTitle = document.title;
         trackPageView(location.pathname, pageTitle);
     }, [location]);
-    
+
     return (
         <>
             <main className="demo-page">
@@ -38,7 +38,7 @@ export default function Demo() {
                         </p>
 
                         <a href="/signup" className="demo-btn-primary">
-                            Schedule Demo
+                            Schedule A Demo
                         </a>
                     </div>
 
@@ -47,11 +47,11 @@ export default function Demo() {
                             <h3>What we’ll cover</h3>
 
                             <ul>
-                                <li>✓ Failed payment analysis</li>
-                                <li>✓ Recovery workflow walkthrough</li>
-                                <li>✓ Retry optimization strategy</li>
-                                <li>✓ Dashboard overview</li>
-                                <li>✓ Pricing and setup</li>
+                                <li>Failed payment analysis</li>
+                                <li>Recovery workflow walkthrough</li>
+                                <li>Retry optimization strategy</li>
+                                <li>Dashboard overview</li>
+                                <li>Pricing and setup</li>
                             </ul>
                         </div>
                     </div>

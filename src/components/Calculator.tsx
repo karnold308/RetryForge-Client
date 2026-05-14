@@ -9,7 +9,7 @@ export default function Calculator() {
     const [inputRecovRate, setInputRecovRate] = useState<number>(25);
     const [calcResult, setCalcResult] = useState<LostMMR | null>(null);
     const mmrMin = 5000;
-    const mmrMax = 250000;
+    const mmrMax = 100000;
     const failMin = 5;
     const failMax = 15;
     const recovMin = 10;
@@ -118,7 +118,7 @@ export default function Calculator() {
                                 <input
                                     id="mrr" type="range" min={mmrMin} max={mmrMax} step="100" value={inputMMRValue} onChange={handleMMRChange}
                                 />
-                                <span className="slider-max">$250k</span>
+                                <span className="slider-max">$100k</span>
                             </div>
                         </div>
                         <div className="calc-control">

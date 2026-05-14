@@ -16,6 +16,16 @@ import RecoveryFlow from "./RecoveryFlow"
 export default function Main() {
     const location = useLocation();
 
+    const { hash } = useLocation();
+
+    useEffect(() => {
+        if (hash) {
+            const element = document.getElementById(hash.replace('#', ''));
+            if (element) {
+                window.scroll({top: element.offsetTop + 200})
+            }
+        }
+    }, [hash]);
 
     useEffect(() => {
         // Track page view on route change

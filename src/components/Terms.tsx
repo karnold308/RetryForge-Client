@@ -7,7 +7,6 @@ import Footer from "./Footer";
 
 export default function TermsAndConditions() {
     const [mobileOpen, setMobileOpen] = useState(false);
-
     const location = useLocation();
 
     useEffect(() => {
@@ -15,7 +14,6 @@ export default function TermsAndConditions() {
         const pageTitle = document.title;
         trackPageView(location.pathname, pageTitle);
     }, [location]);
-
 
     return (
         <>
@@ -27,7 +25,7 @@ export default function TermsAndConditions() {
                     </a>
 
                     <div className="nav-links desktop-nav">
-                        <a href="/demo" className="nav-btn-secondary">Book Demo</a>
+                        <a href="/demo" className="nav-btn-secondary">Book a Demo</a>
                         {/* <a href="/login" className="nav-btn-secondary">Login</a> */}
                         <a href="/signup" className="nav-btn-primary">Get Started</a>
                     </div>
@@ -46,7 +44,7 @@ export default function TermsAndConditions() {
 
                 {mobileOpen && (
                     <div className="mobile-menu">
-                        <a href="/demo">Book Demo</a>
+                        <a href="/demo">Book a Demo</a>
                         <a href="/signup" className="nav-btn-primary">Get Started</a>
                     </div>
                 )}

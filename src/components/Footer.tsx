@@ -34,16 +34,22 @@ export default function Footer() {
                 <div className="footer-links">
                     <div className="footer-column">
                         <h4>Product</h4>
-                        <a href="#features">Features</a>
-                        <a href="#pricing">Pricing</a>
+                        <a href="/#features">Features</a>
+                        <a href="/#pricing">Pricing</a>
+                        <a href="/#howItWorks">How It Works</a>
                         {/* <a href="#">Dashboard</a> */}
                         {/* <a href="#">Stripe Integration</a> */}
                     </div>
 
                     <div className="footer-column">
                         <h4>Company</h4>
-                        <a href="/demo">Book Demo</a>
-                        <a href="#">Contact</a>
+                        <a href="/demo">Book a Demo</a>
+                        <a
+                            href="mailto:support@retryforge.com"
+                            className="text-indigo-600 hover:text-indigo-700"
+                        >
+                            Contact
+                        </a>
                         {/*  <a href="#">Support</a> */}
                     </div>
 

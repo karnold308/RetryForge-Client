@@ -1,6 +1,11 @@
-
+import { Link } from 'react-router-dom';
+import useAuth from "../hooks/useAuth";
+import { isAuthenticated } from "../utils/authUtility";
 
 export default function FounderPresence() {
+    const { auth } = useAuth();
+    const loggedIn = isAuthenticated(auth);
+
     return (
         <>
             <section className="founder-section">
@@ -77,12 +82,14 @@ export default function FounderPresence() {
                             </p>
                         </div>
                         <div className="founder-actions">
-                            <a href="/signup" className="nav-btn-primary">
-                                Join Early Access
-                            </a>
-                            <a href="#pricing" className="nav-btn-secondary">
+                            {loggedIn ? <></> :
+                                <Link to="/signup" className="nav-btn-primary">
+                                    Join Early Access
+                                </Link>
+                            }
+                            <Link to="#pricing" className="nav-btn-secondary">
                                 View Pilot Pricing
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

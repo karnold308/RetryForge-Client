@@ -1,7 +1,6 @@
 import Footer from "../Footer";
 import "../../styles/Cookies.css"
 import ScrollToTopBtn from "../ScrollToTop";
-import Navbar from "../Navbar";
 
 
 export default function Cookies() {
@@ -9,7 +8,6 @@ export default function Cookies() {
     return (
         <>
             <title>RetryForge - Cookie Policy</title>
-            <Navbar />
             <main className="cookie-policy-page">
                 <section className="cookie-policy-hero">
                     <div className="cookie-policy-container">

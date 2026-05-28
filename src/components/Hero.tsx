@@ -34,7 +34,7 @@ export default function Hero() {
                     {/* CTA */}
                     <div className="flex gap-4">
                         {/*
-                        <a href="/demo" className="nav-btn-secondary heroDemoBtn">Book a Demo</a> 
+                        <Link to="/demo" className="nav-btn-secondary heroDemoBtn">Book a Demo</Link> 
                         */ }
                         <a href="#calculator" className="nav-btn-secondary how-much-losing">See How Much You're Losing</a>
                     </div>

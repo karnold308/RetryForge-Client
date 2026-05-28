@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link} from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
 import ScrollToTopBtn from "../ScrollToTop";
 import Footer from "../Footer";
 import "../../styles/Demo.css";
 
-import Navbar from "../Navbar";
 
 export default function Demo() {
     const location = useLocation();
@@ -19,7 +18,6 @@ export default function Demo() {
     return (
         <>
             <title>RetryForge - Demo</title>
-            <Navbar />
             <main className="demo-page">
                 
                 {/* HERO */}
@@ -36,9 +34,9 @@ export default function Demo() {
                             Stripe integration, and expected ROI.
                         </p>
 
-                        <a href="/signup" className="demo-btn-primary">
+                        <Link to="/signup" className="demo-btn-primary">
                             Schedule A Demo
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="demo-hero-right">
@@ -260,23 +258,18 @@ export default function Demo() {
                 {/* FINAL CTA */}
                 <section className="demo-final-cta">
                     <div className="demo-container">
-
                         <h2>
                             Start recovering failed payments automatically
                         </h2>
-
                         <p>
                             Connect Stripe in minutes and recover subscription revenue
                             without manual follow-up.
                         </p>
-
-                        <a href="/signup" className="demo-btn-primary">
+                        <Link to="/signup" className="demo-btn-primary">
                             Get Started
-                        </a>
-
+                        </Link>
                     </div>
                 </section>
-
             </main>
             <ScrollToTopBtn />
             <Footer />

@@ -1509,6 +1509,121 @@ input[type="text"]:focus {
     text-align: center;
 }
 
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.legal-entity {
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: -28px;
+    margin-bottom: 40px;
+}
+
+.persistCheck {
+    font-size: 0.75rem;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.persistCheck label {
+    margin: 0;
+}
+
+[type="checkbox"] {
+    height: 20px;
+    width: 20px;
+    margin: 0 5px 2px 2px;
+}
+
+.app-loader {
+    min-height: 100vh;
+    width: 100%;
+
+    background: #f6f7f9;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem;
+}
+
+.app-loader-card {
+    width: 100%;
+    max-width: 360px;
+
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+
+    border-radius: 16px;
+
+    padding: 2.5rem 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}
+
+.app-loader-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+
+    animation: floatLogo 2.5s ease-in-out infinite;
+}
+
+.app-loader-spinner {
+    width: 34px;
+    height: 34px;
+
+    border-radius: 50%;
+    border: 3px solid #e5e7eb;
+    border-top-color: #22c55e;
+
+    animation: spin 0.9s linear infinite;
+}
+
+.app-loader-title {
+    margin: 0;
+
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111827;
+}
+
+.app-loader-subtitle {
+    margin: 0;
+
+    font-size: 0.9rem;
+    color: #6b7280;
+    text-align: center;
+    line-height: 1.4;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatLogo {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
 
 /* START mobile */
 
@@ -1523,6 +1638,13 @@ input[type="text"]:focus {
 .mobile-menu {
     display: none;
     border-bottom: 1px solid #E5E7EB;
+}
+
+@media (max-width: 480px) {
+    .app-loader-card {
+        padding: 2rem 1.25rem;
+        border-radius: 14px;
+    }
 }
 
 @media (max-width: 900px) {

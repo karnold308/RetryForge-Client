@@ -4,7 +4,6 @@ import { trackPageView } from '../../utils/analytics';
 import Footer from "../Footer";
 import ScrollToTopBtn from '../ScrollToTop';
 import "../../styles/PrivacyPolicy.css";
-import Navbar from "../Navbar";
 
 
 export default function PrivacyPolicy() {
@@ -20,7 +19,6 @@ export default function PrivacyPolicy() {
     return (
         <>
             <title>RetryForge - Privacy Policy</title>
-            <Navbar />
             <main className="min-h-screen bg-gray-50 py-20 px-6">
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-14 shadow-sm">
@@ -30,6 +28,9 @@ export default function PrivacyPolicy() {
                         <p className="text-sm text-gray-500 mb-12">
                             Last updated: May 8, 2026
                         </p>
+                        <p className="legal-entity">
+                            RetryForge is operated by Garritys Goods LLC.
+                        </p>
                         <div className="space-y-10 text-gray-600 leading-8">
                             <div>
                                 <p>
@@ -38,8 +39,8 @@ export default function PrivacyPolicy() {
                                     with us.
                                 </p>
                                 <p className="mt-4">
-                                    This Privacy Policy explains how we collect, use, store, and
-                                    protect information when you use the RetryForge website and
+                                    This Privacy Policy explains how Garritys Goods LLC operating as RetryForge,
+                                    collect, use, store, and protect information when you use the RetryForge website and
                                     services.
                                 </p>
                             </div>

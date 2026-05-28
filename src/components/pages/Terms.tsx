@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
 import Footer from "../Footer";
@@ -7,32 +7,7 @@ import ScrollToTopBtn from '../ScrollToTop';
 
 
 export default function TermsAndConditions() {
-    const [mobileOpen, setMobileOpen] = useState(false);
     const location = useLocation();
-
-    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
-            const target = event.target as Node;
-
-            if (
-                mobileMenuRef.current &&
-                !mobileMenuRef.current.contains(target) &&
-                mobileButtonRef.current &&
-                !mobileButtonRef.current.contains(target)
-            ) {
-                setMobileOpen(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
     useEffect(() => {
         // Track page view on route change
@@ -42,39 +17,7 @@ export default function TermsAndConditions() {
 
     return (
         <>
-            <header>
-                <title>RetryForge - Terms and Conditions</title>
-                <nav className="navbar">
-                    <a href="/" className="logo">
-                        <img className="headerLogo" loading="lazy" src="/letter_mark_white_bg.png" />
-                    </a>
-
-                    <div className="nav-links desktop-nav">
-                        <a href="/demo" className="nav-btn-secondary">Book a Demo</a>
-                        {/* <a href="/login" className="nav-btn-secondary">Login</a> */}
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-
-
-                    {/* Mobile Hamburger */}
-                    <button
-                        ref={mobileButtonRef}
-                        type="button"
-                        className="mobile-menu-btn"
-                        onClick={() => setMobileOpen(!mobileOpen)}>
-                        ☰
-                    </button>
-                </nav>
-
-                {/* Mobile Dropdown */}
-
-                {mobileOpen && (
-                    <div className="mobile-menu" ref={mobileMenuRef}>
-                        <a href="/demo">Book a Demo</a>
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-                )}
-            </header>
+            <title>RetryForge - Terms and Conditions</title>
             <main className="terms-page">
                 <div className="terms-container">
                     <div className="terms-card">
@@ -83,13 +26,15 @@ export default function TermsAndConditions() {
                         <p className="terms-updated">
                             Last updated: May 8, 2026
                         </p>
-
+                        <p className="legal-entity">
+                            RetryForge is operated by Garritys Goods LLC.
+                        </p>
                         <div className="terms-content">
                             <section>
                                 <p>
                                     These Terms & Conditions (“Terms”) govern your access to and
-                                    use of RetryForge (“RetryForge”, “we”, “our”, or “us”),
-                                    including our website, platform, and related services.
+                                    use of RetryForge (“RetryForge”, “we”, “our”, or “us”), operated
+                                    by Garritys Goods LLC, including our website, platform, and related services.
                                 </p>
 
                                 <p>

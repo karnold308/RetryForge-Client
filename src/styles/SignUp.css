@@ -4,10 +4,6 @@
     padding: 40px 24px;
 }
 
-.errMsg {
-    color: red !important;
-}
-
 .successMsg {
    color: #10B981 !important;
 }
@@ -129,6 +125,13 @@
     transform: translateY(0);
 }
 
+.signup-btn:disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 .signup-footer-text {
     margin-top: 24px;
     font-size: 14px;
@@ -214,6 +217,63 @@
     font-size: 15px;
     line-height: 1.7;
     color: #6B7280;
+}
+
+.instructions {
+    font-size: 0.75rem;
+    border-radius: 0.5rem;
+    background: #000;
+    color: #fff;
+    padding: 0.25rem;
+    position: relative;
+    bottom: -10px;
+}
+
+.instructions > svg {
+    margin-right: 0.25rem;
+}
+
+.offscreen {
+    position: absolute;
+    left: -9999px;
+}
+
+.hide {
+    display: none;
+}
+
+.valid {
+    color: limegreen;
+    margin-left: 0.25rem;
+}
+
+.invalid {
+    color: red;
+    margin-left: 0.25rem;
+}
+
+.errmsg {
+    background-color: lightpink;
+    color: firebrick;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.line {
+    display: inline-block;
+}
+
+.signUpInstructions {
+    color: white !important;
+}
+
+.linkText {
+    text-decoration: underline;
+    color: blue;
+}
+.signUpSuccessMsg {
+    padding: 40px;
 }
 
 @media (max-width: 900px) {

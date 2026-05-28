@@ -1,5 +1,6 @@
 import { useState, ChangeEvent, useEffect } from "react";
 import type { LostMMR } from '../models/types'
+import { Link } from 'react-router-dom';
 
 
 
@@ -185,10 +186,10 @@ export default function Calculator() {
                             </div>
                         }
                         {101 > (null !== calcResult ? calcResult.netGain * 12 : 0) &&
-                            <a href="/signup" className="nav-btn-primary cust-plan-btn"
+                            <Link to="/signup" className="nav-btn-primary cust-plan-btn"
                                 style={{ width: "165px" }}>
                                 See your custom recovery plan
-                            </a>
+                            </Link>
                         }
 
                         <p className="calcFootnote">

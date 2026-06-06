@@ -52,15 +52,16 @@ export default function Navbar() {
                     {/*  <a href="/" className="nav-btn-ghost">Home</a> */}
                     <Link to="/#features" className="nav-btn-ghost">Features</Link>
                     <Link to="/#howItWorks" className="nav-btn-ghost">How It Works</Link>
-                    <Link to="/#pricing" className="nav-btn-ghost">Pricing</Link>
+
                     {isLoggedIn ? (
                         <>
                             <Link to="/dashboard" className="nav-btn-primary">Dashboard</Link>
-                            <span className="user-welcome">Hello, {auth !== null ? auth.user : ''}</span>
+                            <span className="user-welcome">Hello, {auth !== null ? auth.email : ''}</span>
                             <button onClick={signOut} className="nav-btn-secondary">Log Out</button>
                         </>
                     ) : (
                         <>
+                            <Link to="/#pricing" className="nav-btn-ghost">Pricing</Link>
                             <Link to="/login" className="nav-btn-secondary">Login</Link>
                             <Link to="/signup" className="nav-btn-primary">Join Waiting List</Link>
                         </>
@@ -86,16 +87,17 @@ export default function Navbar() {
                 <div className="mobile-menu" ref={mobileMenuRef}>
                     <Link to="/#features" onClick={() => setMobileOpen(false)}>Features</Link>
                     <Link to="/#howItWorks" onClick={() => setMobileOpen(false)}>How It Works</Link>
-                    <Link to="/#pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
+
                     {isLoggedIn ? (
                         <>
                             <Link to="/dashboard" className="nav-btn-primary">Dashboard</Link>
-                            <span className="user-welcome">Hello, {null !== auth ? auth.user : ''}</span>
+                            <span className="user-welcome">Hello, {null !== auth ? auth.email : ''}</span>
                             <button onClick={signOut} className="nav-btn-secondary">Log Out</button>
                         </>
                     ) :
                         (
                             <>
+                                <Link to="/#pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
                                 <Link to="/login">Login</Link>
                                 <Link to="/signup" className="nav-btn-primary">Join Waiting List</Link>
                                 {/* <a href="/demo" className="nav-btn-primary">Book a Demo</a> */}

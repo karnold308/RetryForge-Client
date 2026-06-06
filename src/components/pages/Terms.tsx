@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
 import Footer from "../Footer";
 import "../../styles/Terms.css";
-import ScrollToTopBtn from '../ScrollToTop';
+import ScrollToTopBtn from '../ScrollToTopBtn';
 
 
 export default function TermsAndConditions() {

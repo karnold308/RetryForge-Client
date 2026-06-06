@@ -1,25 +1,27 @@
 // src/context/IdleTimeoutProvider.tsx
-import React, { useEffect, useRef, useCallback } from 'react';
-import useAuth from '../hooks/useAuth';
-import useLogout from '../hooks/useLogout';
-import { isAuthenticated } from "../utils/authUtility";
+import React, { useEffect, useRef, useCallback } from 'react'
+import useAuth from '../hooks/useAuth'
+import useLogout from '../hooks/useLogout'
+import { isAuthenticated } from '../utils/authUtility'
+import { useQueryClient } from "@tanstack/react-query"
 
 interface IdleTimeoutProviderProps {
-    children: React.ReactNode;
-    timeoutInMinutes?: number;
+    children: React.ReactNode
+    timeoutInMinutes?: number
 }
 
 export function IdleTimeoutProvider({ children, timeoutInMinutes = 30 }: IdleTimeoutProviderProps) {
-    const { auth } = useAuth();
-    const logout = useLogout();
-    const isLoggingOutRef = useRef(false);
+    const { auth } = useAuth()
+    const logout = useLogout()
+    const isLoggingOutRef = useRef(false)
+    const queryClient = useQueryClient()
 
-    const timeoutMs = timeoutInMinutes * 60 * 1000;
-    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-    const tokenRef = useRef<string | null>(null);
+    const timeoutMs = timeoutInMinutes * 60 * 1000
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+    const tokenRef = useRef<string | null>(null)
 
     useEffect(() => {
-        tokenRef.current = auth?.accessToken || null;
+        tokenRef.current = auth?.accessToken || null
     }, [auth?.accessToken])
 
     // Core logout routine executed when the idle clock runs out
@@ -28,29 +30,30 @@ export function IdleTimeoutProvider({ children, timeoutInMinutes = 30 }: IdleTim
         if (isLoggingOutRef.current) return
         if (!tokenRef.current) return
         try {
-            isLoggingOutRef.current = true;
-            await logout(true);
+            isLoggingOutRef.current = true
+            await logout(true)
+            queryClient.invalidateQueries({ queryKey: ["me"] })
         } finally {
-            isLoggingOutRef.current = false;
+            isLoggingOutRef.current = false
         }
 
-    }, [logout]);
+    }, [logout])
 
     //  Resets the inactivity clock whenever a user action is detected
     const resetTimer = useCallback(() => {
-        if (timerRef.current) clearTimeout(timerRef.current);
+        if (timerRef.current) clearTimeout(timerRef.current)
 
         // Check the live mutable ref here as well
         if (tokenRef.current) {
-            timerRef.current = setTimeout(handleIdleLogout, timeoutMs);
+            timerRef.current = setTimeout(handleIdleLogout, timeoutMs)
         }
-    }, [handleIdleLogout, timeoutMs]);
+    }, [handleIdleLogout, timeoutMs])
 
     useEffect(() => {
         // Only attach event tracking overhead if a user is actively logged in
         if (!isAuthenticated(auth)) {
-            if (timerRef.current) clearTimeout(timerRef.current);
-            return;
+            if (timerRef.current) clearTimeout(timerRef.current)
+            return
         }
 
         // Standard human activity indicators
@@ -59,24 +62,24 @@ export function IdleTimeoutProvider({ children, timeoutInMinutes = 30 }: IdleTim
             'keypress',
             'scroll',
             'touchstart'
-        ];
+        ]
 
         // Bind reset listener to each event type
         activityEvents.forEach(event => {
-            window.addEventListener(event, resetTimer);
-        });
+            window.addEventListener(event, resetTimer)
+        })
 
         // Initialize clock on mount or auth token generation pass
-        resetTimer();
+        resetTimer()
 
         // Cleanup: remove standard listeners and clear active macros on unmount/re-auth
         return () => {
             activityEvents.forEach(event => {
-                window.removeEventListener(event, resetTimer);
-            });
-            if (timerRef.current) clearTimeout(timerRef.current);
-        };
-    }, [auth?.accessToken, resetTimer]);
+                window.removeEventListener(event, resetTimer)
+            })
+            if (timerRef.current) clearTimeout(timerRef.current)
+        }
+    }, [auth?.accessToken, resetTimer])
 
-    return <>{children}</>;
+    return <>{children}</>
 }

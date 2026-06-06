@@ -1,13 +1,13 @@
-import { Link } from "react-router-dom";
-import "../styles/Footer.css";
-import useAuth from "../hooks/useAuth";
-import { isAuthenticated } from "../utils/authUtility";
+import { Link } from "react-router-dom"
+import "../styles/Footer.css"
+import useAuth from "../hooks/useAuth"
+import { isAuthenticated } from "../utils/authUtility"
 
 
 
 export default function Footer() {
-    const { auth } = useAuth();
-    const loggedIn = isAuthenticated(auth);
+    const { auth } = useAuth()
+    const loggedIn = isAuthenticated(auth) && null !== auth ? auth.accessToken !== '' : false
 
     return (
         <footer className="footer">

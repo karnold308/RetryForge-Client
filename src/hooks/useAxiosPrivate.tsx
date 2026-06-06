@@ -7,11 +7,10 @@ import useAuth from './useAuth'
 
 
 interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
-    sent?: boolean;
+    sent?: boolean
 }
 
 const useAxiosPrivate = () => {
-    console.log('in useAxiosPrivate')
     const refresh = useRefreshToken()
     const { auth } = useAuth()
 
@@ -20,9 +19,9 @@ const useAxiosPrivate = () => {
         const reqIntercept = axiosPrivate.interceptors.request.use(
             config => {
                 if (!config.headers['Authorization']) {
-                    config.headers['Authorization'] = `Bearer ${auth?.accessToken}`;
+                    config.headers['Authorization'] = `Bearer ${auth?.accessToken}`
                 }
-                return config;
+                return config
             }, (error) => Promise.reject(error)
         )
 
@@ -32,13 +31,13 @@ const useAxiosPrivate = () => {
             async (error) => {
                 const prevRequest = error?.config as CustomAxiosRequestConfig
                 // If token expires (403 Forbidden) and we haven't tried refreshing yet
-                if (error?.response?.status === 401 && !prevRequest?.sent) {
+                if (error?.response?.status === 403 && !prevRequest?.sent) {
                     prevRequest.sent = true
 
                     try {
-                        const newAccessToken = await refresh();
-                        prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                        axiosPrivate.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`;
+                        const newAccessToken = await refresh()
+                        prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`
+                        axiosPrivate.defaults.headers.common['Authorization'] = `Bearer ${newAccessToken}`
 
                         // Retry the original request with the fresh token
                         return axiosPrivate.request(prevRequest)

@@ -7,7 +7,7 @@ import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import '../../styles/SignUp.css'
 import Footer from "../Footer";
-import ScrollToTopBtn from "../ScrollToTop";
+import ScrollToTopBtn from "../ScrollToTopBtn";
 
 const backendURL = import.meta.env.VITE_BACKEND_URL
 

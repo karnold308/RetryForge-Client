@@ -1,34 +1,37 @@
 import axios from '../api/axios'
 import useAuth from './useAuth'
-import type { AuthData } from '../models/types';
-import { useCallback } from 'react';
+import { useCallback } from 'react'
+import { useQueryClient } from "@tanstack/react-query"
 
 const AUTH_URL = "/auth"
 
 const useRefreshToken = () => {
-    const { setAuth } = useAuth();
+    const { setAuth } = useAuth()
+    const queryClient = useQueryClient()
 
     const refresh = useCallback(async (): Promise<string> => {
-        const resp = await axios.get<{ roles: number[]; accessToken: string, user: string }>
+        const resp = await axios.get<{ userId: number, email: string, roles: number[], accessToken: string }>
             (`${AUTH_URL}/refresh`,
                 {
                     withCredentials: true
                 }
-            );
+            )
 
         setAuth((prev) => {
             return {
                 ...prev,
-                user: resp.data.user,
+                userId: resp.data.userId,
+                email: resp.data.email,
                 roles: resp.data.roles,
                 accessToken: resp.data.accessToken
             }
 
-        });
+        })
+        queryClient.invalidateQueries({ queryKey: ["me"] })
         return resp.data.accessToken
-    }, [setAuth]);
+    }, [setAuth])
 
-    return refresh;
+    return refresh
 }
 
-export default useRefreshToken;
+export default useRefreshToken

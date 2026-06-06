@@ -1,6 +1,6 @@
 import Footer from "../Footer";
 import "../../styles/Cookies.css"
-import ScrollToTopBtn from "../ScrollToTop";
+import ScrollToTopBtn from "../ScrollToTopBtn";
 
 
 export default function Cookies() {

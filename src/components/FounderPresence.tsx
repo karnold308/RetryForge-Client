@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import useAuth from "../hooks/useAuth";
-import { isAuthenticated } from "../utils/authUtility";
+import { Link } from 'react-router-dom'
+import useAuth from "../hooks/useAuth"
+import { isAuthenticated } from "../utils/authUtility"
 
 export default function FounderPresence() {
-    const { auth } = useAuth();
-    const loggedIn = isAuthenticated(auth);
+    const { auth } = useAuth()
+    const loggedIn = isAuthenticated(auth) && null !== auth ? auth.accessToken !== '' : false
 
     return (
         <>
@@ -83,13 +83,15 @@ export default function FounderPresence() {
                         </div>
                         <div className="founder-actions">
                             {loggedIn ? <></> :
-                                <Link to="/signup" className="nav-btn-primary">
-                                    Join Early Access
-                                </Link>
+                                <>
+                                    <Link to="/signup" className="nav-btn-primary">
+                                        Join Early Access
+                                    </Link>
+                                    <Link to="#pricing" className="nav-btn-secondary">
+                                        View Pilot Pricing
+                                    </Link>
+                                </>
                             }
-                            <Link to="#pricing" className="nav-btn-secondary">
-                                View Pilot Pricing
-                            </Link>
                         </div>
                     </div>
                 </div>

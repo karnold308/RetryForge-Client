@@ -2,7 +2,7 @@ import { Analytics } from '@vercel/analytics/react';
 
 import Footer from "./components/Footer";
 import Main from "./components/Main";
-import ScrollToTopBtn from './components/ScrollToTop';
+import ScrollToTopBtn from './components/ScrollToTopBtn';
 
 
 function App() {

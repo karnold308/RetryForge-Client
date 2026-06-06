@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation, Link} from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
-import ScrollToTopBtn from "../ScrollToTop";
+import ScrollToTopBtn from "../ScrollToTopBtn";
 import Footer from "../Footer";
 import "../../styles/Demo.css";
 

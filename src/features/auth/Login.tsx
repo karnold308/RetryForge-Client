@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth"
 import axios from '../../api/axios'
 import { AxiosError } from 'axios'
 import { FormState } from "../../models/types"
+import { useQueryClient } from "@tanstack/react-query"
 
 const AUTH_URL = '/auth'
 
@@ -20,10 +21,11 @@ export default function Login() {
     const [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
     const [errMsg, setErrMsg] = useState('')
-    const redirectTargetRef = useRef<string>("/dashboard");
+    const redirectTargetRef = useRef<string>("/dashboard")
+    const queryClient = useQueryClient()
 
-    const [searchParams] = useSearchParams();
-    const showTimeoutNotice = location.state?.reason === 'timeout';
+    const [searchParams] = useSearchParams()
+    const showTimeoutNotice = location.state?.reason === 'timeout'
 
     useEffect(() => {
         if (userRef.current) userRef.current.focus()
@@ -36,15 +38,15 @@ export default function Login() {
     }, [searchParams, setPersist])
 
     useEffect(() => {
-        const stored = localStorage.getItem('persist');
+        const stored = localStorage.getItem('persist')
 
         if (stored !== null) {
-            setPersist(stored === 'true');
+            setPersist(stored === 'true')
         } else {
-            setPersist(true);
-            localStorage.setItem('persist', 'true');
+            setPersist(true)
+            localStorage.setItem('persist', 'true')
         }
-    }, []);
+    }, [])
 
     useEffect(() => {
         setErrMsg('')
@@ -52,17 +54,17 @@ export default function Login() {
 
     const togglePersist = () => {
         setPersist((prev) => {
-            const nextValue = !prev;
-            localStorage.setItem("persist", String(nextValue));
-            return nextValue;
-        });
+            const nextValue = !prev
+            localStorage.setItem("persist", String(nextValue))
+            return nextValue
+        })
     }
 
     useEffect(() => {
         // Track page view on route change
-        const pageTitle = document.title;
+        const pageTitle = document.title
         trackPageView(location.pathname, pageTitle)
-    }, [location]);
+    }, [location])
 
     async function handleSubmit(prevState: FormState, formData: FormData):
         Promise<FormState> {
@@ -72,25 +74,26 @@ export default function Login() {
         const isDeviceTrusted = localStorage.getItem('persist') === 'true'
 
         try {
-            // const resp = await login({ email, pwd });
+            // const resp = await login({ email, pwd })
             const resp = await axios.post(`${AUTH_URL}/login`,
                 JSON.stringify({ email, pwd: password }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
                 }
-            );
+            )
 
             const accessToken = resp?.data?.accessToken
             const roles = resp?.data?.roles
 
             setPersist(isDeviceTrusted)
 
-            setAuth({ user: email, roles, accessToken: accessToken })
+            setAuth({ userId: 0, email: email, roles, accessToken: accessToken })
             setUser('')
             setPwd('')
+            queryClient.invalidateQueries({ queryKey: ["me"] })
 
-            navigate(redirectTargetRef.current, { replace: true });
+            navigate(redirectTargetRef.current, { replace: true })
 
             return { success: true, message: "Success" }
         } catch (err) {
@@ -113,14 +116,14 @@ export default function Login() {
             return {
                 success: false,
                 message: error.message,
-            };
+            }
         }
     }
 
     const [state, submitAction, isPending] = useActionState(handleSubmit, {
         success: false,
         message: null,
-    });
+    })
 
 
     return (

@@ -74,3 +74,37 @@ export type UseStripeResult = {
     stripe: StripeInfo | null
     isLoading: boolean
 }
+
+
+export interface DashboardOverviewData {
+    failedPayments: number
+    recoveredRevenue: number
+    atRiskCustomers: number
+    recoveryRate: number
+    revenueAtRisk: number
+}
+
+export interface DashboardRecovery {
+    id: string
+    customer: string
+    amount: number
+    failureReason: string | null
+    attempts: number
+    status: string
+    failedDate: string
+    hostedInvoiceUrl?: string | null
+}
+
+export interface DashboardCustomer {
+    id: string
+    stripeCustomerId: string
+    email: string | null
+    name: string | null
+    phone: string | null
+    activeFailures: number
+    recoveredInvoices: number
+    totalAtRisk: number
+    recoveredRevenue: number
+    lastFailedAt: string | null
+}
+

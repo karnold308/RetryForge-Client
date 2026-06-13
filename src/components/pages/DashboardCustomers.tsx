@@ -80,7 +80,7 @@ export default function DashboardCustomers() {
                             </tr>
                         ) : (
                             customers.map(customer => (
-                                <tr key={customer.id}>
+                                <tr key={customer.id} className="dHighlightRow">
                                     <td>
                                         <div>
                                             <strong>

@@ -16,6 +16,10 @@
     z-index: 1;
 }
 
+.dHighlightRow:hover {
+  background: #f9fafb;
+}
+
 .chart-header {
     display: flex;
     justify-content: space-between;

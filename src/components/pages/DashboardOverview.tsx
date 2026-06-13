@@ -14,11 +14,9 @@ export default function DashboardOverview() {
     const { auth } = useAuth()
     const location = useLocation()
     const axiosPrivate = useAxiosPrivate()
-    const [overview, setOverview] =
-        useState<DashboardOverviewData | null>(null)
+    const [overview, setOverview] = useState<DashboardOverviewData | null>(null)
 
-    const [loading, setLoading] =
-        useState(true)
+    const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         // Track page view on route change

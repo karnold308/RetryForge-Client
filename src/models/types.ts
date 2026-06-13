@@ -108,3 +108,18 @@ export interface DashboardCustomer {
     lastFailedAt: string | null
 }
 
+export interface FailureReason {
+    failure_code: string
+    count: number
+}
+
+export interface DashboardAnalyticsFields {
+    totalFailures: number
+    activeRecoveries: number
+    recoveredCases: number
+    recoveredRevenue: number
+    revenueAtRisk: number
+    recoveryRate: number
+    failureReasons: FailureReason[]
+}
+

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation } from 'react-router-dom'
 import { DashboardRecovery } from '../../models/types'
-import { getRecoveries } from '../../api/dashboardApi'
+import { getRecoveries, getRecoveryDetails } from '../../api/dashboardApi'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useAuth from '../../hooks/useAuth'
 import { formatFullStripeCurrency } from '../../utils/formatters'
@@ -15,6 +15,15 @@ export default function DashboardRecoveries() {
     const axiosPrivate = useAxiosPrivate()
     const [recoveries, setRecoveries] = useState<DashboardRecovery[]>([])
     const [loading, setLoading] = useState(true)
+    const [
+        selectedRecovery,
+        setSelectedRecovery
+    ] = useState<string | null>(null)
+
+    const [
+        recoveryDetail,
+        setRecoveryDetail
+    ] = useState<any>(null)
     const statusStyles: Record<string, string> = {
         active: "bg-yellow-50 text-yellow-700 border-yellow-200",
         recovered: "bg-emerald-50 text-emerald-700 border-emerald-200",
@@ -42,6 +51,16 @@ export default function DashboardRecoveries() {
 
         fetchRecoveries()
     }, [auth?.accessToken])
+
+    const openRecovery = async (
+        recoveryId: string
+    ) => {
+
+        const data = await getRecoveryDetails(axiosPrivate, recoveryId)
+
+        setRecoveryDetail(data)
+        setSelectedRecovery(recoveryId)
+    }
 
     const formatFailure = (reason: string | null) => {
         if (!reason) return "Unknown error"
@@ -92,7 +111,7 @@ export default function DashboardRecoveries() {
                                 </tr>
                             ) : (
                                 recoveries.map(r => (
-                                    <tr key={r.id} className="dRecoveries">
+                                    <tr key={r.id} className="dHighlightRow">
                                         <td>{r.customer}</td>
                                         <td className={`font-medium !text-right ${r.amount > 10000 ? "text-red-600" : "text-gray-900"}`}>{formatFullStripeCurrency(r.amount)}</td>
                                         <td>{formatFailure(r.failureReason)}</td>
@@ -117,7 +136,7 @@ export default function DashboardRecoveries() {
                                         <td>
                                             {r.hostedInvoiceUrl && (
                                                 <>
-                                                    <a
+                                                    {/*<a
                                                         className="inline-flex items-center gap-1 text-indigo-600 hover:text-indigo-800 font-medium"
                                                         href={r.hostedInvoiceUrl}
                                                         target="_blank"
@@ -125,6 +144,12 @@ export default function DashboardRecoveries() {
                                                     >
                                                         View
                                                     </a>
+                                                    */}
+                                                    <button
+                                                        onClick={() => openRecovery(r.id)}
+                                                    >
+                                                        Details
+                                                    </button>
                                                     <button
                                                         className="text-gray-500 hover:text-gray-700 text-sm"
                                                         onClick={() => console.log("retry", r.id)}
@@ -140,6 +165,36 @@ export default function DashboardRecoveries() {
                         </tbody>
                     </table>
                 </div>
+                {recoveryDetail && (
+                    <>
+                        <div
+                            className="drawer-backdrop"
+                            onClick={() => {
+                                setRecoveryDetail(null)
+                                setSelectedRecovery(null)
+                            }}
+                        />
+                        <div className="recovery-drawer">
+                            <button className="drawer-close" onClick={() => {
+                                    setRecoveryDetail(null)
+                                    setSelectedRecovery(null)
+                                }}
+                            > x </button>
+                            <h2>Recovery Details</h2>
+                            <div>Customer: {recoveryDetail.customerEmail}</div>
+                            <div>Amount: {formatFullStripeCurrency(recoveryDetail.amount)}</div>
+                            <div>Failure: {recoveryDetail.failureMessage}</div>
+                            <div>Attempts: {recoveryDetail.attemptCount}</div>
+                            <div>Recovery Emails: {recoveryDetail.recoveryEmailsSent}</div>
+                            <div>Status: {recoveryDetail.status}</div>
+                            <div> Failed: {new Date( recoveryDetail.failedAt).toLocaleDateString()}</div>
+                            <a className="text-indigo-600 hover:text-indigo-800 font-medium" 
+                                href={recoveryDetail.hostedInvoiceUrl} target="_blank" rel="noreferrer">
+                                Open Stripe Invoice
+                            </a>
+                        </div>
+                    </>
+                )}
             </div></>
     )
 }

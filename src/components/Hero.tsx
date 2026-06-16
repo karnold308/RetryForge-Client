@@ -2,8 +2,9 @@
 
 export default function Hero() {
     return (
-        <section className="bg-gray-50 section-gradient flex items-center heroSection hero">
-            <div className="container px-8 grid md:grid-cols-2 gap-12 items-center">
+        <section className="bg-gray-50 py-24 xs:py-6 xs:pl-4 xs:pr-4 hero pb-24 border-t border-gray-200/70
+            bg-[radial-gradient(circle_at_top,#6366f10f,#0000_50%)]">
+            <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                 {/* left column */}
                 <div>
                     <div className="flex items-center gap-2 mb-4">
@@ -12,16 +13,16 @@ export default function Hero() {
                         </div>*/}
                         <span className="text-xl font-semibold text-gray-900">
                             {/* RetryForge */}
-                            <img alt="RetryForge logo" className="fullLogo" src="/full_logo_with_name_2.png" />
+                            <img alt="RetryForge logo" className="mix-blend-multiply h-10 w-[200px] h-[90px]" src="/full_logo_with_name_2.png" />
                         </span>
 
                     </div>
-                    <div className="betaBadge">
+                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 font-bold text-sm mb-4">
                         Early Access • Looking for pilot Stripe SaaS companies
                     </div>
 
                     {/* Headline */}
-                    <h1 className="text-5xl md:text-6xl font-semibold tracking-tight text-gray-900 leading-tight mb-5">
+                    <h1 className="text-[42px] md:text-[42px] font-semibold tracking-tight text-gray-900 leading-tight mb-5">
                         Recover subscription revenue Stripe leaves behind
                     </h1>
 
@@ -34,11 +35,11 @@ export default function Hero() {
                     {/* CTA */}
                     <div className="flex gap-4">
                         {/*
-                        <Link to="/demo" className="nav-btn-secondary heroDemoBtn">Book a Demo</Link> 
+                        <Link to="/demo" className="border border-gray-300 px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Book a Demo</Link> 
                         */ }
-                        <a href="#calculator" className="nav-btn-secondary how-much-losing">See How Much You're Losing</a>
+                        <a href="#calculator" className="px-5 py-3 rounded-xl border border-gray-300 font-semibold hover:bg-gray-100 transition">See How Much You're Losing</a>
                     </div>
-                    <div className="hero-trust-bar">
+                    <div className="mt-6 flex items-center text-sm text-gray-600">
                         {/* 
                         <div className="hero-trust-item">
                             <span className="hero-trust-dot"></span>
@@ -55,7 +56,7 @@ export default function Hero() {
                             No billing migration required
                         </div>
                         */ }
-                        <div className="hero-trust-item">
+                        <div className="text-gray-600 backdrop-blur-md bg-white/70 border border-gray-200 rounded-full items-center gap-2 p-2 font-medium flex">
                             <span>Founder-led pilot program for SaaS companies using Stripe Billing</span>
                         </div>
                     </div>

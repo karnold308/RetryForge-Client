@@ -18,10 +18,10 @@ export default function Demo() {
     return (
         <>
             <title>RetryForge - Demo</title>
-            <main className="demo-page">
+            <main className="demo-page px-6 pb-16">
                 
                 {/* HERO */}
-                <section className="demo-hero">
+                <section className="demo-hero pb-24 border-t border-gray-200/70">
                     <div className="demo-hero-left">
                         <span className="demo-badge">
                             Live walkthrough
@@ -55,7 +55,7 @@ export default function Demo() {
                 </section>
 
                 {/* WHAT YOU SEE */}
-                <section className="demo-section">
+                <section className="demo-section pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -99,7 +99,7 @@ export default function Demo() {
                 </section>
 
                 {/* DEMO FLOW */}
-                <section className="demo-section demo-muted" id="workflow">
+                <section className="demo-section demo-muted pb-24 border-t border-gray-200/70" id="workflow">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -163,7 +163,7 @@ export default function Demo() {
                 </section>
 
                 {/* WHAT HAPPENS IN DEMO */}
-                <section className="demo-section">
+                <section className="demo-section pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-callout">
@@ -196,7 +196,7 @@ export default function Demo() {
                 </section>
 
                 {/* FAQ */}
-                <section className="demo-section demo-muted">
+                <section className="demo-section demo-muted pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -256,7 +256,7 @@ export default function Demo() {
                 </section>
 
                 {/* FINAL CTA */}
-                <section className="demo-final-cta">
+                <section className="demo-final-cta pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
                         <h2>
                             Start recovering failed payments automatically

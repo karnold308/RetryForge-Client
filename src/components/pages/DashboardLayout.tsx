@@ -30,7 +30,7 @@ export default function DashboardLayout() {
                         )}
                         <DashboardSidebar open={sidebarOpen}
                             onClose={() => setSidebarOpen(false)} />
-                        <main className="dashboard-main">
+                        <main className="dashboard-main px-6 pb-16">
                             <button
                                 className="dashboard-mobile-menu-btn"
                                 onClick={() =>

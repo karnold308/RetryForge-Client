@@ -129,7 +129,7 @@ export default function Login() {
     return (
         <>
             <title>RetryForge - Login</title>
-            <main>
+            <main className="px-6 pb-16">
                 <div className="auth-page">
                     <div className="auth-shell">
                         <div className="auth-brand">

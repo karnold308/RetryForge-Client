@@ -199,8 +199,8 @@ export default function SignUp() {
     return (
         <>
             <title>RetryForge - Sign Up</title>
-            <main className="signup-page">
-                <section className="signup-layout">
+            <main className="signup-page px-6 pb-16">
+                <section className="signup-layout pb-24 border-t border-gray-200/70">
                     {state.success ? (
                         <div ref={successRef} className="signup-card signUpSuccessMsg">
                             <h1>Success!</h1>
@@ -225,7 +225,7 @@ export default function SignUp() {
                                 </p>
                             </div>
                             <form className="signup-form" action={formAction} name="signup-form">
-                                <div className="signup-field">
+                                <div className="signup-field focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
                                     <label htmlFor="company">Company name</label>
                                     <input
                                         ref={companyRef}
@@ -247,6 +247,7 @@ export default function SignUp() {
                                         </span>
                                     </label>
                                     <input
+                                        className="focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                                         name="email"
                                         id="email"
                                         type="text"

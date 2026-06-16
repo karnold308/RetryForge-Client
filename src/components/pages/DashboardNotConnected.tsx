@@ -25,7 +25,7 @@ export default function DashboardNotConnected() {
             </aside>
 
             {/* Main Content */}
-            <main className="main">
+            <main className="main px-6 pb-16">
                 {/* Header */}
                 <header className="topbar dashboardNotConn">
                     <div className="topbar-left">
@@ -39,7 +39,7 @@ export default function DashboardNotConnected() {
                     </div>
                 </header>
                 {/* Connect Stripe Card */}
-                <section className="connect-card">
+                <section className="connect-card pb-24 border-t border-gray-200/70">
                     <div className="connect-content">
                         <div className="connect-badge">
                             Stripe Required
@@ -87,7 +87,7 @@ export default function DashboardNotConnected() {
                     </div>
                 </section>
                 {/* Placeholder Cards */}
-                <section className="placeholder-grid">
+                <section className="placeholder-grid pb-24 border-t border-gray-200/70">
                     <div className="placeholder-card">
                         <h3>Recovery Metrics</h3>
                         <div className="skeleton-line medium" />

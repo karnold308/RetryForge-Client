@@ -41,11 +41,11 @@ export default function Main() {
     return (
         <main>
             <Hero />
-            <Calculator />
             <Problem />
+            <RecoveryFlow />
             <Solution />
             <HowItWorks />
-            <RecoveryFlow />
+            <Calculator />
             <Comparisons />
             {loggedIn ? <></>
                 :

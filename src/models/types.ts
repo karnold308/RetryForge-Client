@@ -77,11 +77,19 @@ export type UseStripeResult = {
 
 
 export interface DashboardOverviewData {
-    failedPayments: number
+    totalFailedPayments: number,
+    activeRecoveries: number
     recoveredRevenue: number
     atRiskCustomers: number
     recoveryRate: number
-    revenueAtRisk: number
+    revenueAtRisk: number,
+    averageRecoveryTime: number,
+    retryForgeRecoveries: number,
+    retryForgePercent: number,
+    stripeRecoveries: number,
+    stripePercent: number,
+    manualRecoveries: number,
+    manualPercent: number,
 }
 
 export interface DashboardRecovery {

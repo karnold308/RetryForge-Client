@@ -12,7 +12,7 @@ export default function ConnectedDashboard({ me }: Props) {
     return (
         <div className="cd-container">
             {/* STRIPE STATUS */}
-            <section className="cd-card cd-status-card">
+            <section className="cd-card cd-status-card pb-24 border-t border-gray-200/70">
                 <div className="cd-status-top">
                     <h2>Stripe Connection</h2>
 
@@ -59,18 +59,18 @@ export default function ConnectedDashboard({ me }: Props) {
             </section>
 
             {/* ONBOARDING / NEXT STEPS */}
-            <section className="cd-card">
+            <section className="cd-card pb-24 border-t border-gray-200/70">
                 <h2>What happens next</h2>
 
                 <ul className="cd-list">
                     <li>We sync your Stripe account data</li>
                     <li>We start listening for payment failures</li>
                     <li>Recovery analytics appear after first events</li>
-                    <li>You’ll see churn & retry insights in real time</li>
+                    <li>You'll see churn & retry insights in real time</li>
                 </ul>
             </section>
             {/* EMPTY STATE ANALYTICS */}
-            <section className="cd-grid-cards">
+            <section className="cd-grid-cards pb-24 border-t border-gray-200/70">
                 <div className="cd-card cd-empty">
                     <h3>Failed Payments</h3>
                     <p>No data yet</p>
@@ -86,7 +86,7 @@ export default function ConnectedDashboard({ me }: Props) {
             </section>
 
             {/* ACTIONS */}
-            <section className="cd-card cd-actions">
+            <section className="cd-card cd-actions pb-24 border-t border-gray-200/70">
                 <h2>Next actions</h2>
                 <div className="cd-actions-row">
                     <button className="btn-secondary">

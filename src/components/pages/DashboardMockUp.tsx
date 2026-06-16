@@ -89,8 +89,7 @@ export default function Dashboard() {
                 </div>
             </aside>
 
-            {/* MAIN */}
-            <main className="flex-1 flex">
+            <main className="flex-1 flex px-6 pb-16">
                 <div className="flex-1 p-8">
                     {/* TOP BAR */}
                     <div className="flex items-center justify-between mb-8">

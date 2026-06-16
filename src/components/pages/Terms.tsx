@@ -18,7 +18,7 @@ export default function TermsAndConditions() {
     return (
         <>
             <title>RetryForge - Terms and Conditions</title>
-            <main className="terms-page">
+            <main className="terms-page px-6 pb-16">
                 <div className="terms-container">
                     <div className="terms-card">
                         <h1 className="terms-title">Terms & Conditions</h1>
@@ -30,7 +30,7 @@ export default function TermsAndConditions() {
                             RetryForge is operated by Garritys Goods LLC.
                         </p>
                         <div className="terms-content">
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <p>
                                     These Terms & Conditions (“Terms”) govern your access to and
                                     use of RetryForge (“RetryForge”, “we”, “our”, or “us”), operated
@@ -44,7 +44,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>1. Eligibility</h2>
 
                                 <p>
@@ -58,7 +58,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>2. Services</h2>
 
                                 <p>
@@ -84,7 +84,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>3. Account Responsibilities</h2>
 
                                 <p>
@@ -105,7 +105,7 @@ export default function TermsAndConditions() {
                                 </ul>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>4. Stripe Integration</h2>
 
                                 <p>
@@ -125,7 +125,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>5. Fees and Billing</h2>
 
                                 <p>
@@ -153,7 +153,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>6. Acceptable Use</h2>
 
                                 <p>
@@ -174,7 +174,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>7. Intellectual Property</h2>
 
                                 <p>
@@ -189,7 +189,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>8. Data and Privacy</h2>
 
                                 <p>
@@ -202,7 +202,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>9. Disclaimer of Warranties</h2>
 
                                 <p>
@@ -216,7 +216,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>10. Limitation of Liability</h2>
 
                                 <p>
@@ -232,7 +232,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>11. Termination</h2>
 
                                 <p>
@@ -255,7 +255,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>12. Changes to These Terms</h2>
 
                                 <p>
@@ -268,7 +268,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>13. Governing Law</h2>
 
                                 <p>
@@ -278,7 +278,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>14. Contact</h2>
 
                                 <p>

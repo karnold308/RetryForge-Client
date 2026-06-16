@@ -43,39 +43,42 @@ export default function Navbar() {
 
     return (
         <header>
-            <nav className="navbar">
-                <Link to="/" className="logo">
-                    <img className="headerLogo" loading="lazy" src="/letter_mark_white_bg.png" />
-                </Link>
+            <nav className="bg-white relative flex items-center justify-between px-6 py-4 max-w-7xl mx-auto border-b border-gray-300">
+                <div className="absolute left-0 logo flex-1 pl-2 pt-2">
+                    <Link to="/" className="inline-block" >
+                        <img className="headerLogo h-8 w-auto" loading="lazy" src="/letter_mark_white_bg.png" />
+                    </Link>
+                </div>
 
-                <div className="nav-links desktop-nav">
-                    {/*  <a href="/" className="nav-btn-ghost">Home</a> */}
-                    <Link to="/#features" className="nav-btn-ghost">Features</Link>
-                    <Link to="/#howItWorks" className="nav-btn-ghost">How It Works</Link>
+                <div className="nav-links desktop-nav hidden flex md:flex items-center gap-4">
+                    {/*  <a href="/" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition duration-200 ease-in-out">Home</a> */}
+                    <Link to="/#features" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition-colors transition hover:bg-gray-100 duration-200 ease-in-out">Features</Link>
+                    <Link to="/#howItWorks" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition transition hover:bg-gray-100 duration-200 ease-in-out">How It Works</Link>
 
                     {isLoggedIn ? (
                         <>
-                            <Link to="/dashboard" className="nav-btn-primary">Dashboard</Link>
+                            <Link to="/dashboard" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Dashboard</Link>
                             <span className="user-welcome">Hello, {auth !== null ? auth.email : ''}</span>
-                            <button onClick={signOut} className="nav-btn-secondary">Log Out</button>
+                            <button onClick={signOut} className="nav-btn-secondary border border-gray-300 px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Log Out</button>
                         </>
                     ) : (
                         <>
-                            <Link to="/#pricing" className="nav-btn-ghost">Pricing</Link>
-                            <Link to="/login" className="nav-btn-secondary">Login</Link>
-                            <Link to="/signup" className="nav-btn-primary">Join Waiting List</Link>
+                            <Link to="/#pricing" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition transition hover:bg-gray-100 duration-200 ease-in-out">Pricing</Link>
+                            <Link to="/login" className="nav-btn-secondary border border-gray-300 px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Login</Link>
+                            <Link to="/signup" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-[0_4px_9px_#4f46e540] transform: translateY(0); hover:bg-[#4338ca] hover:-translate-y-[1px] transition duration-200">Join Waiting List</Link>
                         </>
                     )}
-                    {/* <a href="/demo" className="nav-btn-primary">Book a Demo</a> */}
-                    {/* <a href="/signup" className="nav-btn-primary">Get Started</a> */}
+                    {/* <a href="/demo" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Book a Demo</a> */}
+                    {/* <a href="/signup" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Get Started</a> */}
                 </div>
+
 
 
                 {/* Mobile Hamburger */}
                 <button
                     ref={mobileButtonRef}
                     type="button"
-                    className="mobile-menu-btn"
+                    className="md:hidden text-2xl px-3 py-2 ml-auto"
                     onClick={() => setMobileOpen(!mobileOpen)}>
                     ☰
                 </button>
@@ -84,23 +87,23 @@ export default function Navbar() {
             {/* Mobile Dropdown */}
 
             {mobileOpen && (
-                <div className="mobile-menu" ref={mobileMenuRef}>
+                <div className="md:hidden absolute top-16 left-0 w-full bg-white border-t border-gray-200 flex flex-col gap-4 p-6" ref={mobileMenuRef}>
                     <Link to="/#features" onClick={() => setMobileOpen(false)}>Features</Link>
                     <Link to="/#howItWorks" onClick={() => setMobileOpen(false)}>How It Works</Link>
 
                     {isLoggedIn ? (
                         <>
-                            <Link to="/dashboard" className="nav-btn-primary">Dashboard</Link>
+                            <Link to="/dashboard" className="bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Dashboard</Link>
                             <span className="user-welcome">Hello, {null !== auth ? auth.email : ''}</span>
-                            <button onClick={signOut} className="nav-btn-secondary">Log Out</button>
+                            <button onClick={signOut} className="border border-gray-300 px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Log Out</button>
                         </>
                     ) :
                         (
                             <>
                                 <Link to="/#pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
                                 <Link to="/login">Login</Link>
-                                <Link to="/signup" className="nav-btn-primary">Join Waiting List</Link>
-                                {/* <a href="/demo" className="nav-btn-primary">Book a Demo</a> */}
+                                <Link to="/signup" className="w-1/2 bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Join Waiting List</Link>
+                                {/* <a href="/demo" className="bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Book a Demo</a> */}
                             </>
                         )
                     }

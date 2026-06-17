@@ -107,6 +107,8 @@ export default function Login() {
                 setErrMsg("Missing Email or Password")
             } else if (error.response?.status === 401) {
                 setErrMsg("Unauthorized")
+            } else if (error.response?.status === 429) {
+                setErrMsg("Too Many Login Attempts. Try Again In 5 Minutes.")
             } else {
                 setErrMsg("Login Failed")
             }

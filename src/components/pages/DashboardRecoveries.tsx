@@ -6,7 +6,7 @@ import { DashboardRecovery } from '../../models/types'
 import { getRecoveries, getRecoveryDetails } from '../../api/dashboardApi'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
 import useAuth from '../../hooks/useAuth'
-import { formatFullStripeCurrency } from '../../utils/formatters'
+import { formatFullStripeCurrency, formatFailure } from '../../utils/formatters'
 import '../../styles/DashboardRecoveries.css'
 
 export default function DashboardRecoveries() {
@@ -15,10 +15,7 @@ export default function DashboardRecoveries() {
     const axiosPrivate = useAxiosPrivate()
     const [recoveries, setRecoveries] = useState<DashboardRecovery[]>([])
     const [loading, setLoading] = useState(true)
-    const [
-        selectedRecovery,
-        setSelectedRecovery
-    ] = useState<string | null>(null)
+    const [selectedRecovery, setSelectedRecovery] = useState<string | null>(null)
 
     const [
         recoveryDetail,
@@ -61,17 +58,6 @@ export default function DashboardRecoveries() {
         setRecoveryDetail(data)
         setSelectedRecovery(recoveryId)
     }
-
-    const formatFailure = (reason: string | null) => {
-        if (!reason) return "Unknown error"
-
-        if (reason.includes("declined")) return "Card declined"
-        if (reason.includes("insufficient")) return "Insufficient funds"
-        if (reason.includes("expired")) return "Card expired"
-
-        return reason
-    }
-
 
 
     return (

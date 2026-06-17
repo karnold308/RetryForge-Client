@@ -67,4 +67,37 @@ const formatLargeNumber = (num: number) => {
 }
 
 
-export { formatCurrency, formatCompactNumber, formatLargeNumber, formatStripeCurrency, formatFullStripeCurrency }
+const formatFailure = (reason: string | null) => {
+    if (!reason) return "Unknown error"
+
+    if (reason.includes("declined")) return "Card Declined"
+    if (reason.includes("insufficient")) return "Insufficient Funds"
+    if (reason.includes("expired")) return "Card Expired"
+    if (reason.includes("processing")) return "Processing Error"
+    if (reason.includes("honor")) return "Do Not Honor"
+
+    return reason
+}
+
+const getTimeAgo = (date: string) => {
+    if (null === date) return ''
+    
+    const diff = Date.now() - new Date(date).getTime()
+
+    const minutes = Math.floor(diff / 60000)
+    if (minutes < 60) return `${minutes}m ago`
+
+    const hours = Math.floor(minutes / 60)
+    if (hours < 24) return `${hours}h ago`
+
+    const days = Math.floor(hours / 24)
+    return `${days}d ago`
+}
+
+
+export {
+    formatCurrency, formatCompactNumber,
+    formatLargeNumber, formatStripeCurrency,
+    formatFullStripeCurrency, formatFailure,
+    getTimeAgo
+}

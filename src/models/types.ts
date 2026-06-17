@@ -77,19 +77,21 @@ export type UseStripeResult = {
 
 
 export interface DashboardOverviewData {
-    totalFailedPayments: number,
+    totalFailedPayments: number
     activeRecoveries: number
     recoveredRevenue: number
     atRiskCustomers: number
     recoveryRate: number
-    revenueAtRisk: number,
-    averageRecoveryTime: number,
-    retryForgeRecoveries: number,
-    retryForgePercent: number,
-    stripeRecoveries: number,
-    stripePercent: number,
-    manualRecoveries: number,
-    manualPercent: number,
+    revenueAtRisk: number
+    averageRecoveryTime: number
+    retryForgeAutoRevenue: number
+    retryForgeManualRevenue: number
+    stripeRevenue: number
+    manualRevenue: number
+    retryForgeAutoPercent: number
+    retryForgeManualPercent: number
+    stripePercent: number
+    manualPercent: number
 }
 
 export interface DashboardRecovery {
@@ -129,5 +131,43 @@ export interface DashboardAnalyticsFields {
     revenueAtRisk: number
     recoveryRate: number
     failureReasons: FailureReason[]
+}
+
+export interface DashboardRecentRecovery {
+    id: string
+    customer: string
+    amount: number
+    source: string
+    failureReason: string
+    attempts: number
+    recoveredAt: string
+}
+
+export interface SystemStatus {
+    stripeConnected: boolean
+    webhookHealthy: boolean
+    lastWebhookAt: string
+    schedulerHealthy: boolean
+    lastJobRun: string
+}
+
+export interface AtRiskCustomers {
+    id: string
+    name: string
+    email: string
+    activeFailures: number
+    totalAtRisk: number
+    lastFailedAt: string
+}
+
+export interface TopOpportunities {
+  id: string
+  email: string
+  name: string
+  totalAtRisk: number
+  activeFailures: number
+  lastFailedAt: string
+  score: number
+  topCaseId: string
 }
 

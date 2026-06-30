@@ -27,7 +27,7 @@ export default function Main() {
         if (hash) {
             const element = document.getElementById(hash.replace('#', ''))
             if (element) {
-                window.scroll({ top: element.offsetTop + 200 })
+                window.scroll({ top: element.offsetTop - 80 })
             }
         }
     }, [hash])
@@ -37,6 +37,7 @@ export default function Main() {
         const pageTitle = document.title
         trackPageView(location.pathname, pageTitle)
     }, [location])
+
 
     return (
         <main>

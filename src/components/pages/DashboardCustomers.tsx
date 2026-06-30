@@ -1,43 +1,27 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation } from 'react-router-dom'
-import useAxiosPrivate from '../../hooks/useAxiosPrivate'
-import useAuth from '../../hooks/useAuth'
 import { DashboardCustomer } from '../../models/types'
-import { getCustomers } from '../../api/dashboardApi'
 import { formatFullStripeCurrency } from '../../utils/formatters'
+import { useCustomers } from '../../hooks/dashboard/queries'
 
 export default function DashboardCustomers() {
-    const { auth } = useAuth()
+    // const { auth } = useAuth()
     const location = useLocation()
-    const axiosPrivate = useAxiosPrivate()
-    const [customers, setCustomers] = useState<DashboardCustomer[]>([])
-    const [loading, setLoading] = useState(true)
+    // const axiosPrivate = useAxiosPrivate()
+    // const [customers, setCustomers] = useState<DashboardCustomer[]>([])
+    // const [loading, setLoading] = useState(true)
 
-
+    const customersQuery = useCustomers()
+    const isLoading = customersQuery.isPending
+    const customers = customersQuery.data
 
     useEffect(() => {
         // Track page view on route change
         const pageTitle = document.title
         trackPageView(location.pathname, pageTitle)
     }, [location])
-
-    useEffect(() => {
-        const fetch = async () => {
-            try {
-                const data = await getCustomers(axiosPrivate)
-                setCustomers(data)
-            } catch (err) {
-                console.error(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetch()
-    }, [auth?.accessToken])
-
 
     return (
         <>
@@ -66,7 +50,7 @@ export default function DashboardCustomers() {
                         </tr>
                     </thead>
                     <tbody>
-                        {loading ? (
+                        {isLoading ? (
                             <tr>
                                 <td colSpan={5}>
                                     Loading...
@@ -79,7 +63,7 @@ export default function DashboardCustomers() {
                                 </td>
                             </tr>
                         ) : (
-                            customers.map(customer => (
+                            customers.map((customer: DashboardCustomer) => (
                                 <tr key={customer.id} className="dHighlightRow">
                                     <td>
                                         <div>

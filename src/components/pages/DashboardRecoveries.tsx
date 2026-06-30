@@ -2,29 +2,47 @@ import StripeStatusIndicator from '../StripeStatusIndicator'
 import { useEffect, useState } from 'react'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation } from 'react-router-dom'
-import { DashboardRecovery } from '../../models/types'
-import { getRecoveries, getRecoveryDetails } from '../../api/dashboardApi'
-import useAxiosPrivate from '../../hooks/useAxiosPrivate'
-import useAuth from '../../hooks/useAuth'
 import { formatFullStripeCurrency, formatFailure } from '../../utils/formatters'
 import '../../styles/DashboardRecoveries.css'
+import { useRecoveries, useRecoveryDetails } from '../../hooks/dashboard/queries'
+import { DashboardRecovery } from '../../models/types'
+import { useRetryRecovery } from '../../hooks/dashboard/mutations'
 
 export default function DashboardRecoveries() {
-    const { auth } = useAuth()
     const location = useLocation()
-    const axiosPrivate = useAxiosPrivate()
-    const [recoveries, setRecoveries] = useState<DashboardRecovery[]>([])
-    const [loading, setLoading] = useState(true)
-    const [selectedRecovery, setSelectedRecovery] = useState<string | null>(null)
+    const [selectedRecoveryId, setSelectedRecoveryId] = useState<string | null>(null)
+    const recoveriesQuery = useRecoveries()
+    const recoveryDetailsQuery = useRecoveryDetails(selectedRecoveryId)
+    const isLoading = recoveriesQuery.isPending
+    const recoveries = recoveriesQuery.data ?? []
+    const recoveryDetails = recoveryDetailsQuery.data
 
-    const [
-        recoveryDetail,
-        setRecoveryDetail
-    ] = useState<any>(null)
+    const [retryingId, setRetryingId] = useState<string | null>(null)
+    const retryMutation = useRetryRecovery()
+
+
     const statusStyles: Record<string, string> = {
         active: "bg-yellow-50 text-yellow-700 border-yellow-200",
         recovered: "bg-emerald-50 text-emerald-700 border-emerald-200",
         failed: "bg-red-50 text-red-700 border-red-200",
+    }
+
+
+    const handleRowClick = (id: string) => {
+        setSelectedRecoveryId(id)
+    }
+
+    const handleRetry = async (id: string) => {
+        try {
+            setRetryingId(id)
+            await retryMutation.mutateAsync(id)
+        }
+        catch (err) {
+            console.error(err)
+        }
+        finally {
+            setRetryingId(null)
+        }
     }
 
     useEffect(() => {
@@ -33,31 +51,6 @@ export default function DashboardRecoveries() {
         trackPageView(location.pathname, pageTitle)
     }, [location])
 
-
-    useEffect(() => {
-        const fetchRecoveries = async () => {
-            try {
-                const data = await getRecoveries(axiosPrivate)
-                setRecoveries(data)
-            } catch (err) {
-                console.error("Failed to load recoveries", err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        fetchRecoveries()
-    }, [auth?.accessToken])
-
-    const openRecovery = async (
-        recoveryId: string
-    ) => {
-
-        const data = await getRecoveryDetails(axiosPrivate, recoveryId)
-
-        setRecoveryDetail(data)
-        setSelectedRecovery(recoveryId)
-    }
 
 
     return (
@@ -85,7 +78,7 @@ export default function DashboardRecoveries() {
                             </tr>
                         </thead>
                         <tbody>
-                            {loading ? (
+                            {isLoading ? (
                                 <tr>
                                     <td colSpan={7}>Loading...</td>
                                 </tr>
@@ -96,7 +89,7 @@ export default function DashboardRecoveries() {
                                     </td>
                                 </tr>
                             ) : (
-                                recoveries.map(r => (
+                                recoveries.map((r: DashboardRecovery) => (
                                     <tr key={r.id} className="dHighlightRow">
                                         <td>{r.customer}</td>
                                         <td className={`font-medium !text-right ${r.amount > 10000 ? "text-red-600" : "text-gray-900"}`}>{formatFullStripeCurrency(r.amount)}</td>
@@ -132,15 +125,16 @@ export default function DashboardRecoveries() {
                                                     </a>
                                                     */}
                                                     <button
-                                                        onClick={() => openRecovery(r.id)}
+                                                        onClick={() => handleRowClick(r.id)}
                                                     >
                                                         Details
                                                     </button>
                                                     <button
                                                         className="text-gray-500 hover:text-gray-700 text-sm"
-                                                        onClick={() => console.log("retry", r.id)}
+                                                        onClick={() => handleRetry(r.id)}
+                                                        disabled={retryingId === r.id}
                                                     >
-                                                        &nbsp;/&nbsp;Retry
+                                                        &nbsp;/&nbsp;{retryingId === r.id ? "Retrying..." : "Retry"}
                                                     </button>
                                                 </>
                                             )}
@@ -151,31 +145,38 @@ export default function DashboardRecoveries() {
                         </tbody>
                     </table>
                 </div>
-                {recoveryDetail && (
+                {/*
+                {recoveryDetailsQuery.isPending && (
+                    <Spinner />
+                )}
+
+                {recoveryDetailsQuery.isError && (
+                    <ErrorCard />
+                )}
+                */}
+                {selectedRecoveryId && (
                     <>
                         <div
                             className="drawer-backdrop"
                             onClick={() => {
-                                setRecoveryDetail(null)
-                                setSelectedRecovery(null)
+                                setSelectedRecoveryId(null)
                             }}
                         />
                         <div className="recovery-drawer">
                             <button className="drawer-close" onClick={() => {
-                                    setRecoveryDetail(null)
-                                    setSelectedRecovery(null)
-                                }}
+                                setSelectedRecoveryId(null)
+                            }}
                             > x </button>
                             <h2>Recovery Details</h2>
-                            <div>Customer: {recoveryDetail.customerEmail}</div>
-                            <div>Amount: {formatFullStripeCurrency(recoveryDetail.amount)}</div>
-                            <div>Failure: {recoveryDetail.failureMessage}</div>
-                            <div>Attempts: {recoveryDetail.attemptCount}</div>
-                            <div>Recovery Emails: {recoveryDetail.recoveryEmailsSent}</div>
-                            <div>Status: {recoveryDetail.status}</div>
-                            <div> Failed: {new Date( recoveryDetail.failedAt).toLocaleDateString()}</div>
-                            <a className="text-indigo-600 hover:text-indigo-800 font-medium" 
-                                href={recoveryDetail.hostedInvoiceUrl} target="_blank" rel="noreferrer">
+                            <div>Customer: {recoveryDetails.customerEmail}</div>
+                            <div>Amount: {formatFullStripeCurrency(recoveryDetails.amount)}</div>
+                            <div>Failure: {recoveryDetails.failureMessage}</div>
+                            <div>Attempts: {recoveryDetails.attemptCount}</div>
+                            <div>Recovery Emails: {recoveryDetails.recoveryEmailsSent}</div>
+                            <div>Status: {recoveryDetails.status}</div>
+                            <div> Failed: {new Date(recoveryDetails.failedAt).toLocaleDateString()}</div>
+                            <a className="text-indigo-600 hover:text-indigo-800 font-medium"
+                                href={recoveryDetails.hostedInvoiceUrl} target="_blank" rel="noreferrer">
                                 Open Stripe Invoice
                             </a>
                         </div>

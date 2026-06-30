@@ -18,7 +18,6 @@ import RequireAuth from "./features/auth/RequireAuth"
 import Navbar from './components/Navbar'
 import PublicOnlyRoute from "./features/auth/PublicOnly"
 import { IdleTimeoutProvider } from "./security/IdleTimeoutProvider"
-import { setupInterceptors } from "./api/interceptors"
 import { isAuthenticated } from "./utils/authUtility"
 import DashboardOverview from "./components/pages/DashboardOverview"
 import DashboardAnalytics from './components/pages/DashboardAnalytics'
@@ -32,11 +31,6 @@ function Root() {
     const [isLoading, setIsLoading] = useState<boolean>(true)
     const refresh = useRefreshToken()
     const { auth } = useAuth()
-
-
-    useEffect(() => {
-        setupInterceptors(refresh)
-    }, [refresh])
 
 
     useEffect(() => {

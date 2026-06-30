@@ -1,19 +1,15 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation } from 'react-router-dom'
-import useAxiosPrivate from '../../hooks/useAxiosPrivate'
-import useAuth from '../../hooks/useAuth'
-import { DashboardAnalyticsFields } from '../../models/types'
-import { getAnalytics } from '../../api/dashboardApi'
 import { formatFullStripeCurrency } from '../../utils/formatters'
+import { useAnalytics } from '../../hooks/dashboard/queries'
 
 export default function DashboardAnalytics() {
-    const { auth } = useAuth()
     const location = useLocation()
-    const axiosPrivate = useAxiosPrivate()
-    const [analytics, setAnalytics] = useState<DashboardAnalyticsFields | null>(null)
-    const [loading, setLoading] = useState(true)
+    const analyticsQuery = useAnalytics()
+    const isLoading = analyticsQuery.isPending
+    const analytics = analyticsQuery.data
 
     useEffect(() => {
         // Track page view on route change
@@ -22,25 +18,8 @@ export default function DashboardAnalytics() {
     }, [location])
 
 
-    useEffect(() => {
-
-        const load = async () => {
-            try {
-                const res = await getAnalytics(axiosPrivate)
-                setAnalytics(res)
-            } catch (err) {
-                console.error(err)
-            } finally {
-                setLoading(false)
-            }
-        }
-
-        load()
-    }, [auth?.accessToken])
-
     const formatFailure = (reason: string | null) => {
         if (!reason) return "Unknown error"
-
         if (reason.includes("declined")) return "Card declined"
         if (reason.includes("insufficient")) return "Insufficient funds"
         if (reason.includes("expired")) return "Card expired"
@@ -48,7 +27,7 @@ export default function DashboardAnalytics() {
         return reason
     }
 
-    if (loading) {
+    if (isLoading) {
         return <div>Loading...</div>
     }
 

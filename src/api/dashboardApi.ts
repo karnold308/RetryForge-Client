@@ -22,6 +22,7 @@ export const getAnalytics = async (axiosPrivate: AxiosInstance) => {
 
 
 export const getRecoveryDetails = async (axiosPrivate: AxiosInstance, id: string) => {
+    console.log("getRecoveryDetails", id)
     const response = await axiosPrivate.get(`/api/dashboard/recoveries/${id}`)
     return response.data
 }

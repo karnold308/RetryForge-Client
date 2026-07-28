@@ -16,7 +16,7 @@ export default function ConnectError() {
     return (
         <>
             <title>RetryForge - Stripe Connect Error</title>
-            <main>
+            <main className="p-12">
             <p>
                 There was an error when connecting your Stripe account to RetryForge. Please try again and if the problem persists, reach out to 
                 <a

@@ -3,7 +3,8 @@ import useAxiosPrivate from "../useAxiosPrivate"
 import {
     getOverview, getRecentRecoveries, getSystemStatus,
     getTopOpportunities, getAnalytics, getCustomers, getRecoveries,
-    getRecoveryDetails
+    getRecoveryDetails,
+    retryHistorySync
 } from "../../api/dashboardApi"
 import { dashboardKeys } from '../../hooks/dashboard/queryKeys'
 
@@ -42,12 +43,13 @@ export function useRecoveries() {
     return useQuery({ queryKey: dashboardKeys.recoveries, queryFn: () => getRecoveries(axiosPrivate) })
 }
 
- export function useRecoveryDetails(id: string | null) {
+export function useRecoveryDetails(id: string | null) {
     const axiosPrivate = useAxiosPrivate()
     return useQuery({
         queryKey: [...dashboardKeys.recoveryDetails(id ?? "")],
         queryFn: () => getRecoveryDetails(axiosPrivate, id!),
         enabled: !!id
     })
- }
+}
+
 

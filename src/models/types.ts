@@ -46,29 +46,34 @@ export interface FormState {
 }
 
 export interface StripeInfo {
-    connected: boolean;
-    stripeAccountId?: string;
-    chargesEnabled?: boolean;
-    detailsSubmitted?: boolean;
-    payoutsEnabled?: boolean;
-    country?: string;
-    stripeEmail?: string;
+    connected: boolean
+    stripeAccountId?: string
+    chargesEnabled?: boolean
+    detailsSubmitted?: boolean
+    payoutsEnabled?: boolean
+    country?: string
+    stripeEmail?: string
+    historySyncStatus?: string
+    historySyncStartedAt?: string | null
+    historySyncCompletedAt?: string | null
+    historySyncError?: string
+    initialSyncComplete?: boolean
 }
 
 export interface MeResponse {
-    id: string;
-    email: string;
-    company?: string;
-    roles: number[];
-    stripe: StripeInfo | null;
+    id: string
+    email: string
+    company?: string
+    roles: number[]
+    stripe: StripeInfo | null
 }
 
 
 export type NavItem = {
-    label: string;
-    path: string;
-    exact?: boolean;
-};
+    label: string
+    path: string
+    exact?: boolean
+}
 
 export type UseStripeResult = {
     stripe: StripeInfo | null
@@ -169,5 +174,45 @@ export interface TopOpportunities {
   lastFailedAt: string
   score: number
   topCaseId: string
+}
+
+export interface ResendVerificationSuccess {
+    success: boolean
+    message: string
+    alreadyVerified?: boolean
+}
+
+export interface ForgotPasswordSuccess {
+    success: boolean
+    message: string
+}
+
+export interface ApiError {
+    success: boolean
+    message: string
+}
+
+export interface ApiErrorResponse {
+    success: false
+    message: string
+    code?: string
+}
+
+export const AUTH_ERRORS = {
+    EMAIL_NOT_VERIFIED: "EMAIL_NOT_VERIFIED",
+    RESET_TOKEN_INVALID: "RESET_TOKEN_INVALID",
+    RESET_TOKEN_EXPIRED: "RESET_TOKEN_EXPIRED",
+    PASSWORD_SAME_AS_CURRENT: "PASSWORD_SAME_AS_CURRENT",
+
+}
+
+export interface ResetPasswordRequest {
+    token: string
+    password: string
+}
+
+export interface ChangePasswordRequest {
+    currentPassword: string
+    newPassword: string
 }
 

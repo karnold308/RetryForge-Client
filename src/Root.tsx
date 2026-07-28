@@ -25,6 +25,8 @@ import DashboardRecoveries from "./components/pages/DashboardRecoveries"
 import DashboardCustomers from "./components/pages/DashboardCustomers"
 import DashboardSettings from "./components/pages/DashboardSettings"
 import ConnectError from "./components/pages/ConnectError"
+import ResendVerification from "./components/pages/ResendVerification.tsx"
+import ResetPassword from "./components/pages/ResetPassword.tsx"
 
 
 function Root() {
@@ -95,16 +97,18 @@ function Root() {
                 <Routes>
                     {/* public routes */}
                     <Route path="/" element={<App />} />
-                    <Route path="/demo" element={<Demo />} />
+                    {/* <Route path="/demo" element={<Demo />} /> */}
 
                     <Route path="/privacy" element={<PrivacyPolicy />} />
                     <Route path="/terms" element={<TermsAndConditions />} />
                     <Route path="/cookies" element={<Cookies />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password" element={<ResetPassword /> } />
                     {/* public routes */}
 
                     <Route element={<PublicOnlyRoute />}>
                         <Route path="/signup" element={<SignUp />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/resend-verification" element={<ResendVerification />} />
                         <Route path="/login" element={<Login />} />
                     </Route>
 

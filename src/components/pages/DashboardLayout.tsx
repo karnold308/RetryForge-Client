@@ -39,7 +39,7 @@ export default function DashboardLayout() {
                             >
                                 ☰ Menu
                             </button>
-                            <Outlet />
+                            <Outlet context={{ me }}/>
                         </main>
                     </>
                 ) : (

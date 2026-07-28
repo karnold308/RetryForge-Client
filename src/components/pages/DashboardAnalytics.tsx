@@ -1,11 +1,14 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { useEffect } from 'react'
 import { trackPageView } from '../../utils/analytics'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useOutletContext } from 'react-router-dom'
 import { formatFullStripeCurrency } from '../../utils/formatters'
 import { useAnalytics } from '../../hooks/dashboard/queries'
+import { MeResponse } from '../../models/types'
+
 
 export default function DashboardAnalytics() {
+    const { me } = useOutletContext<{ me: MeResponse | undefined}>()
     const location = useLocation()
     const analyticsQuery = useAnalytics()
     const isLoading = analyticsQuery.isPending

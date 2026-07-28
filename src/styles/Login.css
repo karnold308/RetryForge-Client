@@ -197,7 +197,7 @@
     color: #9CA3AF;
 }
 
-.auth-stripe-btn {
+.auth-google-btn {
     width: 100%;
     padding: 14px 18px;
     border-radius: 12px;
@@ -213,7 +213,7 @@
         transform 0.2s ease;
 }
 
-.auth-stripe-btn:hover {
+.auth-google-btn:hover {
     background: #F9FAFB;
     border-color: #C7D2FE;
     transform: translateY(-1px);
@@ -233,6 +233,14 @@
 
 .auth-footer a:hover {
     text-decoration: underline;
+}
+
+.successmsg {
+    color: #15803d;
+    background: #dcfce7;
+    border: 1px solid #bbf7d0;
+    padding: 0.75rem;
+    border-radius: 4px;
 }
 
 @media (max-width: 900px) {

@@ -1,18 +1,15 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { useEffect } from 'react'
 import { trackPageView } from '../../utils/analytics'
-import { useLocation } from 'react-router-dom'
-import { DashboardCustomer } from '../../models/types'
+import { useLocation, useOutletContext } from 'react-router-dom'
+import { DashboardCustomer, MeResponse } from '../../models/types'
 import { formatFullStripeCurrency } from '../../utils/formatters'
 import { useCustomers } from '../../hooks/dashboard/queries'
 
-export default function DashboardCustomers() {
-    // const { auth } = useAuth()
-    const location = useLocation()
-    // const axiosPrivate = useAxiosPrivate()
-    // const [customers, setCustomers] = useState<DashboardCustomer[]>([])
-    // const [loading, setLoading] = useState(true)
 
+export default function DashboardCustomers() {
+    const { me } = useOutletContext<{ me: MeResponse | undefined}>()
+    const location = useLocation()
     const customersQuery = useCustomers()
     const isLoading = customersQuery.isPending
     const customers = customersQuery.data

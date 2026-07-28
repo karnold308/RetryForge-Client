@@ -23,7 +23,7 @@ export default function NoMatch() {
                     <img className="four0Four-header-logo" loading="lazy" src="/letter_mark_white_bg.png" />
                 </Link>
             </header>
-            <main>
+            <main className="p-12">
                 <p>Looks like you landed on a page we don't have. Click our header icon and go back to our home page</p>
             </main>
             <Footer />

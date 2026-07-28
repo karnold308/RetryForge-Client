@@ -1,7 +1,9 @@
+import { useEffect } from "react"
 import Footer from "../Footer"
-import { useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
-import { trackPageView } from '../../utils/analytics'
+import ScrollToTopBtn from "../ScrollToTopBtn"
+import { useLocation } from "react-router-dom"
+import { trackPageView } from "../../utils/analytics"
+import RequestPasswordResetForm from "../RequestPasswordResetForm"
 
 
 export default function ForgotPassword() {
@@ -13,11 +15,15 @@ export default function ForgotPassword() {
         trackPageView(location.pathname, pageTitle)
     }, [location])
 
+    
 
     return (
         <>
             <title>RetryForge - Forgot Password</title>
-
+            <main className="p-6">
+                <RequestPasswordResetForm heading="Forgot your password?"/>
+            </main>
+            <ScrollToTopBtn />
             <Footer />
         </>
     )

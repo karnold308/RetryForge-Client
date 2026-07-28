@@ -2,22 +2,34 @@
 <urlset xmlns="http://sitemaps.org">
     <url>
         <loc>https://retryforge.com</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-07-24</lastmod>
     </url>
     <url>
         <loc>https://retryforge.com/signup</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+        <loc>https://retryforge.com/login</loc>
+        <lastmod>2026-07-24</lastmod>
     </url>
     <url>
         <loc>https://retryforge.com/privacy</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-07-24</lastmod>
     </url>
     <url>
         <loc>https://retryforge.com/terms</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-07-24</lastmod>
     </url>
     <url>
         <loc>https://retryforge.com/cookies</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+        <loc>https://retryforge.com/resend-verification</loc>
+        <lastmod>2026-07-24</lastmod>
+    </url>
+    <url>
+        <loc>https://retryforge.com/forgot-password</loc>
+        <lastmod>2026-07-24</lastmod>
     </url>
 </urlset>

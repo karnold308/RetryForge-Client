@@ -205,11 +205,6 @@ export default function SignUp() {
                         <div ref={successRef} className="signup-card signUpSuccessMsg">
                             <h1>Success!</h1>
                             <p className="successMsg">{state.message}</p>
-                            <p>
-                                <span className="linkText">
-                                    <Link to="/login">Sign In</Link>
-                                </span>
-                            </p>
                         </div>
                     ) : (
 

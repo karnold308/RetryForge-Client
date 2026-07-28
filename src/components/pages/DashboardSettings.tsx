@@ -1,15 +1,16 @@
 import StripeConnectionCard from "../StripeConnectionCard"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation } from 'react-router-dom'
-
+import ChangePasswordForm from "../ChangePasswordForm"
 
 
 export default function DashboardSettings() {
     const location = useLocation()
+    const [expanded, setExpanded] = useState(false)
     const openStripe = location.hash === '#stripe'
-    
+
     useEffect(() => {
         // Track page view on route change
         const pageTitle = document.title
@@ -35,11 +36,13 @@ export default function DashboardSettings() {
                     <StripeStatusIndicator />
                 </div>
 
+
                 <div className="settings-grid">
                     <div id="stripe-card" className="dashboard-card">
                         <StripeConnectionCard forceOpen={openStripe} />
                     </div>
 
+                    {/* 
                     <div className="dashboard-card">
                         <h3>Notifications</h3>
                         <p>
@@ -49,7 +52,8 @@ export default function DashboardSettings() {
                             Configure
                         </button>
                     </div>
-
+                    */}
+                    {/* 
                     <div className="dashboard-card">
                         <h3>Account</h3>
                         <p>
@@ -59,11 +63,17 @@ export default function DashboardSettings() {
                             Edit Profile
                         </button>
                     </div>
+                    */}
                     <div className="dashboard-card">
                         <h3>Security</h3>
-                        <button>
+                        <button className="nav-btn-secondary mt-2 inline-block border! border-gray-300! px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition"
+                            onClick={() =>
+                                setExpanded(!expanded)
+                            }>
                             Change Password
                         </button>
+                        {expanded && <ChangePasswordForm />}
+
                     </div>
 
                 </div>

@@ -1,14 +1,16 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { useEffect, useState } from 'react'
 import { trackPageView } from '../../utils/analytics'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useOutletContext } from 'react-router-dom'
 import { formatFullStripeCurrency, formatFailure } from '../../utils/formatters'
 import '../../styles/DashboardRecoveries.css'
 import { useRecoveries, useRecoveryDetails } from '../../hooks/dashboard/queries'
-import { DashboardRecovery } from '../../models/types'
+import { DashboardRecovery, MeResponse } from '../../models/types'
 import { useRetryRecovery } from '../../hooks/dashboard/mutations'
 
+
 export default function DashboardRecoveries() {
+    const { me } = useOutletContext<{ me: MeResponse | undefined }>()
     const location = useLocation()
     const [selectedRecoveryId, setSelectedRecoveryId] = useState<string | null>(null)
     const recoveriesQuery = useRecoveries()
@@ -134,7 +136,10 @@ export default function DashboardRecoveries() {
                                                         onClick={() => handleRetry(r.id)}
                                                         disabled={retryingId === r.id}
                                                     >
-                                                        &nbsp;/&nbsp;{retryingId === r.id ? "Retrying..." : "Retry"}
+                                                        {'recovered' !== r.status ? 
+                                                            (retryingId === r.id ? "\u00A0/\u00A0Retrying..." : "\u00A0/\u00A0Retry")
+                                                            : '' }
+                                                        
                                                     </button>
                                                 </>
                                             )}
@@ -158,30 +163,49 @@ export default function DashboardRecoveries() {
                     <>
                         <div
                             className="drawer-backdrop"
-                            onClick={() => {
-                                setSelectedRecoveryId(null)
-                            }}
+                            onClick={() => setSelectedRecoveryId(null)}
                         />
+
                         <div className="recovery-drawer">
-                            <button className="drawer-close" onClick={() => {
-                                setSelectedRecoveryId(null)
-                            }}
-                            > x </button>
+                            <button
+                                className="drawer-close"
+                                onClick={() => setSelectedRecoveryId(null)}
+                            >
+                                ×
+                            </button>
+
                             <h2>Recovery Details</h2>
-                            <div>Customer: {recoveryDetails.customerEmail}</div>
-                            <div>Amount: {formatFullStripeCurrency(recoveryDetails.amount)}</div>
-                            <div>Failure: {recoveryDetails.failureMessage}</div>
-                            <div>Attempts: {recoveryDetails.attemptCount}</div>
-                            <div>Recovery Emails: {recoveryDetails.recoveryEmailsSent}</div>
-                            <div>Status: {recoveryDetails.status}</div>
-                            <div> Failed: {new Date(recoveryDetails.failedAt).toLocaleDateString()}</div>
-                            <a className="text-indigo-600 hover:text-indigo-800 font-medium"
-                                href={recoveryDetails.hostedInvoiceUrl} target="_blank" rel="noreferrer">
-                                Open Stripe Invoice
-                            </a>
+
+                            {recoveryDetailsQuery.isPending ? (
+                                <p>Loading...</p>
+                            ) : recoveryDetailsQuery.isError ? (
+                                <p>Unable to load recovery details.</p>
+                            ) : recoveryDetails ? (
+                                <>
+                                    <div>Customer: {recoveryDetails.customerEmail}</div>
+                                    <div>Amount: {formatFullStripeCurrency(recoveryDetails.amount)}</div>
+                                    <div>Failure: {recoveryDetails.failureMessage}</div>
+                                    <div>Attempts: {recoveryDetails.attemptCount}</div>
+                                    <div>Recovery Emails: {recoveryDetails.recoveryEmailsSent}</div>
+                                    <div>Status: {recoveryDetails.status}</div>
+                                    <div>
+                                        Failed: {new Date(recoveryDetails.failedAt).toLocaleDateString()}
+                                    </div>
+
+                                    <a
+                                        className="text-indigo-600 hover:text-indigo-800 font-medium"
+                                        href={recoveryDetails.hostedInvoiceUrl}
+                                        target="_blank"
+                                        rel="noreferrer"
+                                    >
+                                        Open Stripe Invoice
+                                    </a>
+                                </>
+                            ) : null}
                         </div>
                     </>
                 )}
-            </div></>
+            </div>
+        </>
     )
 }

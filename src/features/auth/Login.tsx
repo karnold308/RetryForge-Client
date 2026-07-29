@@ -40,7 +40,7 @@ export default function Login() {
         text: string
     } | null>(null)
 
-    const passwordReset = searchParams.get("passwordReset");
+    const passwordReset = searchParams.get("passwordReset")
 
     useEffect(() => {
         if (passwordReset === "success") {

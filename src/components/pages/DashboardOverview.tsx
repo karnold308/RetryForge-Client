@@ -28,7 +28,6 @@ export default function DashboardOverview() {
     const topOpportunitiesQuery = useTopOpportunities()
     const historySyncStatus = me?.stripe?.historySyncStatus ?? 'queued'
     const { mutate: retryHistorySync, isPending } = useHistorySync()
-    const [searchParams] = useSearchParams()
     const { mutate: skipHistorySync } = useSkipHistorySync()
     const didRefresh = useRef(false)
 

@@ -4,7 +4,6 @@ import {
     getOverview, getRecentRecoveries, getSystemStatus,
     getTopOpportunities, getAnalytics, getCustomers, getRecoveries,
     getRecoveryDetails,
-    retryHistorySync
 } from "../../api/dashboardApi"
 import { dashboardKeys } from '../../hooks/dashboard/queryKeys'
 

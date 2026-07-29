@@ -1,27 +1,25 @@
-import { useEffect } from "react";
-import { useLocation } from 'react-router-dom';
-import { trackPageView } from '../../utils/analytics';
-import Footer from "../Footer";
-import ScrollToTopBtn from '../ScrollToTop';
-import "../../styles/PrivacyPolicy.css";
-import Navbar from "../Navbar";
+import { useEffect } from "react"
+import { useLocation } from 'react-router-dom'
+import { trackPageView } from '../../utils/analytics'
+import Footer from "../Footer"
+import ScrollToTopBtn from '../ScrollToTopBtn'
+import "../../styles/PrivacyPolicy.css"
 
 
 export default function PrivacyPolicy() {
-    const location = useLocation();
+    const location = useLocation()
 
     useEffect(() => {
         // Track page view on route change
-        const pageTitle = document.title;
-        trackPageView(location.pathname, pageTitle);
-    }, [location]);
+        const pageTitle = document.title
+        trackPageView(location.pathname, pageTitle)
+    }, [location])
 
 
     return (
         <>
             <title>RetryForge - Privacy Policy</title>
-            <Navbar />
-            <main className="min-h-screen bg-gray-50 py-20 px-6">
+            <main className="min-h-screen bg-gray-50 py-20 px-6 pb-16">
                 <div className="max-w-4xl mx-auto">
                     <div className="bg-white border border-gray-200 rounded-3xl p-8 md:p-14 shadow-sm">
                         <h1 className="text-5xl font-semibold tracking-tight text-gray-900 mb-4">
@@ -29,6 +27,9 @@ export default function PrivacyPolicy() {
                         </h1>
                         <p className="text-sm text-gray-500 mb-12">
                             Last updated: May 8, 2026
+                        </p>
+                        <p className="legal-entity">
+                            RetryForge is operated by Garritys Goods LLC.
                         </p>
                         <div className="space-y-10 text-gray-600 leading-8">
                             <div>
@@ -38,12 +39,12 @@ export default function PrivacyPolicy() {
                                     with us.
                                 </p>
                                 <p className="mt-4">
-                                    This Privacy Policy explains how we collect, use, store, and
-                                    protect information when you use the RetryForge website and
+                                    This Privacy Policy explains how Garritys Goods LLC operating as RetryForge,
+                                    collect, use, store, and protect information when you use the RetryForge website and
                                     services.
                                 </p>
                             </div>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     1. Information We Collect
                                 </h2>
@@ -101,7 +102,7 @@ export default function PrivacyPolicy() {
                                     <li>Cookies and analytics data</li>
                                 </ul>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     2. How We Use Information
                                 </h2>
@@ -118,7 +119,7 @@ export default function PrivacyPolicy() {
                                     <li>Comply with legal obligations</li>
                                 </ul>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     3. Cookies and Analytics
                                 </h2>
@@ -139,7 +140,7 @@ export default function PrivacyPolicy() {
                                     You can control cookies through your browser settings.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     4. Data Sharing
                                 </h2>
@@ -160,7 +161,7 @@ export default function PrivacyPolicy() {
                                     protect our rights, users, or platform security.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     5. Data Retention
                                 </h2>
@@ -176,7 +177,7 @@ export default function PrivacyPolicy() {
                                     any time.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     6. Security
                                 </h2>
@@ -189,7 +190,7 @@ export default function PrivacyPolicy() {
                                     completely secure, and we cannot guarantee absolute security.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     7. International Users
                                 </h2>
@@ -202,7 +203,7 @@ export default function PrivacyPolicy() {
                                     By using RetryForge, you consent to these transfers.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     8. Your Rights
                                 </h2>
@@ -222,7 +223,7 @@ export default function PrivacyPolicy() {
                                     below.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     9. Third-Party Services
                                 </h2>
@@ -238,7 +239,7 @@ export default function PrivacyPolicy() {
                                     Please review their privacy policies separately.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     10. Children’s Privacy
                                 </h2>
@@ -248,7 +249,7 @@ export default function PrivacyPolicy() {
                                     children.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     11. Changes to This Privacy Policy
                                 </h2>
@@ -264,7 +265,7 @@ export default function PrivacyPolicy() {
                                     constitutes acceptance of the updated policy.
                                 </p>
                             </section>
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2 className="text-3xl font-semibold tracking-tight text-gray-900 mb-4">
                                     12. Contact Us
                                 </h2>
@@ -289,5 +290,5 @@ export default function PrivacyPolicy() {
             <ScrollToTopBtn />
             <Footer />
         </>
-    );
+    )
 }

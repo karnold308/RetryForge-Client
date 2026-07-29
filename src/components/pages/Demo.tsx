@@ -1,11 +1,10 @@
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link} from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
-import ScrollToTopBtn from "../ScrollToTop";
+import ScrollToTopBtn from "../ScrollToTopBtn";
 import Footer from "../Footer";
 import "../../styles/Demo.css";
 
-import Navbar from "../Navbar";
 
 export default function Demo() {
     const location = useLocation();
@@ -19,11 +18,10 @@ export default function Demo() {
     return (
         <>
             <title>RetryForge - Demo</title>
-            <Navbar />
-            <main className="demo-page">
+            <main className="demo-page px-6 pb-16">
                 
                 {/* HERO */}
-                <section className="demo-hero">
+                <section className="demo-hero pb-24 border-t border-gray-200/70">
                     <div className="demo-hero-left">
                         <span className="demo-badge">
                             Live walkthrough
@@ -36,9 +34,9 @@ export default function Demo() {
                             Stripe integration, and expected ROI.
                         </p>
 
-                        <a href="/signup" className="demo-btn-primary">
+                        <Link to="/signup" className="demo-btn-primary">
                             Schedule A Demo
-                        </a>
+                        </Link>
                     </div>
 
                     <div className="demo-hero-right">
@@ -57,7 +55,7 @@ export default function Demo() {
                 </section>
 
                 {/* WHAT YOU SEE */}
-                <section className="demo-section">
+                <section className="demo-section pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -101,7 +99,7 @@ export default function Demo() {
                 </section>
 
                 {/* DEMO FLOW */}
-                <section className="demo-section demo-muted" id="workflow">
+                <section className="demo-section demo-muted pb-24 border-t border-gray-200/70" id="workflow">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -165,7 +163,7 @@ export default function Demo() {
                 </section>
 
                 {/* WHAT HAPPENS IN DEMO */}
-                <section className="demo-section">
+                <section className="demo-section pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-callout">
@@ -198,7 +196,7 @@ export default function Demo() {
                 </section>
 
                 {/* FAQ */}
-                <section className="demo-section demo-muted">
+                <section className="demo-section demo-muted pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
 
                         <div className="demo-section-header">
@@ -258,25 +256,20 @@ export default function Demo() {
                 </section>
 
                 {/* FINAL CTA */}
-                <section className="demo-final-cta">
+                <section className="demo-final-cta pb-24 border-t border-gray-200/70">
                     <div className="demo-container">
-
                         <h2>
                             Start recovering failed payments automatically
                         </h2>
-
                         <p>
                             Connect Stripe in minutes and recover subscription revenue
                             without manual follow-up.
                         </p>
-
-                        <a href="/signup" className="demo-btn-primary">
+                        <Link to="/signup" className="demo-btn-primary">
                             Get Started
-                        </a>
-
+                        </Link>
                     </div>
                 </section>
-
             </main>
             <ScrollToTopBtn />
             <Footer />

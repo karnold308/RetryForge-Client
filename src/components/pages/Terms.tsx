@@ -1,38 +1,13 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../../utils/analytics';
 import Footer from "../Footer";
 import "../../styles/Terms.css";
-import ScrollToTopBtn from '../ScrollToTop';
+import ScrollToTopBtn from '../ScrollToTopBtn';
 
 
 export default function TermsAndConditions() {
-    const [mobileOpen, setMobileOpen] = useState(false);
     const location = useLocation();
-
-    const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-    const mobileButtonRef = useRef<HTMLButtonElement | null>(null);
-
-    useEffect(() => {
-        function handleClickOutside(event: MouseEvent) {
-            const target = event.target as Node;
-
-            if (
-                mobileMenuRef.current &&
-                !mobileMenuRef.current.contains(target) &&
-                mobileButtonRef.current &&
-                !mobileButtonRef.current.contains(target)
-            ) {
-                setMobileOpen(false);
-            }
-        }
-
-        document.addEventListener("mousedown", handleClickOutside);
-
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
-    }, []);
 
     useEffect(() => {
         // Track page view on route change
@@ -42,40 +17,8 @@ export default function TermsAndConditions() {
 
     return (
         <>
-            <header>
-                <title>RetryForge - Terms and Conditions</title>
-                <nav className="navbar">
-                    <a href="/" className="logo">
-                        <img className="headerLogo" loading="lazy" src="/letter_mark_white_bg.png" />
-                    </a>
-
-                    <div className="nav-links desktop-nav">
-                        <a href="/demo" className="nav-btn-secondary">Book a Demo</a>
-                        {/* <a href="/login" className="nav-btn-secondary">Login</a> */}
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-
-
-                    {/* Mobile Hamburger */}
-                    <button
-                        ref={mobileButtonRef}
-                        type="button"
-                        className="mobile-menu-btn"
-                        onClick={() => setMobileOpen(!mobileOpen)}>
-                        ☰
-                    </button>
-                </nav>
-
-                {/* Mobile Dropdown */}
-
-                {mobileOpen && (
-                    <div className="mobile-menu" ref={mobileMenuRef}>
-                        <a href="/demo">Book a Demo</a>
-                        <a href="/signup" className="nav-btn-primary">Get Started</a>
-                    </div>
-                )}
-            </header>
-            <main className="terms-page">
+            <title>RetryForge - Terms and Conditions</title>
+            <main className="terms-page px-6 pb-16">
                 <div className="terms-container">
                     <div className="terms-card">
                         <h1 className="terms-title">Terms & Conditions</h1>
@@ -83,13 +26,15 @@ export default function TermsAndConditions() {
                         <p className="terms-updated">
                             Last updated: May 8, 2026
                         </p>
-
+                        <p className="legal-entity">
+                            RetryForge is operated by Garritys Goods LLC.
+                        </p>
                         <div className="terms-content">
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <p>
                                     These Terms & Conditions (“Terms”) govern your access to and
-                                    use of RetryForge (“RetryForge”, “we”, “our”, or “us”),
-                                    including our website, platform, and related services.
+                                    use of RetryForge (“RetryForge”, “we”, “our”, or “us”), operated
+                                    by Garritys Goods LLC, including our website, platform, and related services.
                                 </p>
 
                                 <p>
@@ -99,7 +44,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>1. Eligibility</h2>
 
                                 <p>
@@ -113,7 +58,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>2. Services</h2>
 
                                 <p>
@@ -139,7 +84,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>3. Account Responsibilities</h2>
 
                                 <p>
@@ -160,7 +105,7 @@ export default function TermsAndConditions() {
                                 </ul>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>4. Stripe Integration</h2>
 
                                 <p>
@@ -180,7 +125,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>5. Fees and Billing</h2>
 
                                 <p>
@@ -208,7 +153,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>6. Acceptable Use</h2>
 
                                 <p>
@@ -229,7 +174,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>7. Intellectual Property</h2>
 
                                 <p>
@@ -244,7 +189,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>8. Data and Privacy</h2>
 
                                 <p>
@@ -257,7 +202,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>9. Disclaimer of Warranties</h2>
 
                                 <p>
@@ -271,7 +216,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>10. Limitation of Liability</h2>
 
                                 <p>
@@ -287,7 +232,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>11. Termination</h2>
 
                                 <p>
@@ -310,7 +255,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>12. Changes to These Terms</h2>
 
                                 <p>
@@ -323,7 +268,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>13. Governing Law</h2>
 
                                 <p>
@@ -333,7 +278,7 @@ export default function TermsAndConditions() {
                                 </p>
                             </section>
 
-                            <section>
+                            <section className="pb-24 border-t border-gray-200/70">
                                 <h2>14. Contact</h2>
 
                                 <p>

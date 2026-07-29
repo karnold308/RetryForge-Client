@@ -1,7 +1,7 @@
 
 export default function SocialProof() {
     return (
-        <section className="proof px-8 grid">
+        <section className="proof px-8 grid pb-24 border-t border-gray-200/70">
             <h2>Built for modern SaaS teams</h2>
 
             <p>

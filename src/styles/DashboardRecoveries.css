@@ -1,0 +1,42 @@
+
+.drawer-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.drawer-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.3);
+    z-index: 999;
+}
+
+.recovery-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 450px;
+    max-width: 90vw;
+    height: 100vh;
+    background: white;
+    padding: 24px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: -8px 0 24px rgba(0,0,0,.12);
+    animation: slideIn .25s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+

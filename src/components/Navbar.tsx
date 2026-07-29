@@ -65,7 +65,7 @@ export default function Navbar() {
                         <>
                             <Link to="/#pricing" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition transition hover:bg-gray-100 duration-200 ease-in-out">Pricing</Link>
                             <Link to="/login" className="nav-btn-secondary border border-gray-300 px-5 py-3 rounded-xl font-semibold hover:bg-gray-50 transition">Login</Link>
-                            <Link to="/signup" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-[0_4px_9px_#4f46e540] transform: translateY(0); hover:bg-[#4338ca] hover:-translate-y-[1px] transition duration-200">Join Waiting List</Link>
+                            <Link to="/signup" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition shadow-[0_4px_9px_#4f46e540] transform: translateY(0); hover:bg-[#4338ca] hover:-translate-y-[1px] transition duration-200">Sign Up</Link>
                         </>
                     )}
                     {/* <a href="/demo" className="nav-btn-primary bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Book a Demo</a> */}
@@ -102,7 +102,7 @@ export default function Navbar() {
                             <>
                                 <Link to="/#pricing" onClick={() => setMobileOpen(false)}>Pricing</Link>
                                 <Link to="/login">Login</Link>
-                                <Link to="/signup" className="w-1/2 bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Join Waiting List</Link>
+                                <Link to="/signup" className="w-1/2 bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Sign Up</Link>
                                 {/* <a href="/demo" className="bg-indigo-600 text-white px-5 py-3 rounded-xl font-semibold hover:bg-indigo-700 transition">Book a Demo</a> */}
                             </>
                         )

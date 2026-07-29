@@ -2,7 +2,7 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { trackPageView } from '../../utils/analytics'
 import { useLocation, useOutletContext, useSearchParams } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 import {
     useOverview,
@@ -19,7 +19,6 @@ import DashboardOverviewSystemStatus from '../DashboardOverviewSystemStatus'
 import { MeResponse } from '../../models/types'
 import { useHistorySync, useSkipHistorySync } from '../../hooks/dashboard/mutations'
 
-
 export default function DashboardOverview() {
     const { me } = useOutletContext<{ me: MeResponse | undefined }>()
     const location = useLocation()
@@ -33,10 +32,6 @@ export default function DashboardOverview() {
     const { mutate: skipHistorySync } = useSkipHistorySync()
     const didRefresh = useRef(false)
 
-    const [pageMessage, setPageMessage] = useState<{
-        type: "success" | "error"
-        text: string
-    } | null>(null)
 
     useEffect(() => {
         if (
@@ -52,33 +47,7 @@ export default function DashboardOverview() {
         }
     }, [historySyncStatus])
 
-    useEffect(() => {
-        const stripeConnect = searchParams.get("stripe")
-        if (!stripeConnect) {
-            return
-        }
-
-        switch (stripeConnect) {
-            case 'expired':
-                setPageMessage({
-                    type: "error",
-                    text: "Your Stripe connection session expired. Please click Connect Stripe again."
-                })
-
-                searchParams.delete("stripe")
-                window.history.replaceState({}, "", "/dashboard")
-                break
-            case 'error':
-                setPageMessage({
-                    type: "error",
-                    text: "There was an error connecting your Stripe account. Please click Connect Stripe again or email support"
-                })
-
-                searchParams.delete("stripe")
-                window.history.replaceState({}, "", "/dashboard")
-                break
-        }
-    }, [])
+    
 
     const isLoading =
         overviewQuery.isPending ||
@@ -94,8 +63,6 @@ export default function DashboardOverview() {
     }, [location])
 
 
-
-
     return (
         <>
             <title>RetryForge - Dashboard Overview</title>
@@ -107,13 +74,7 @@ export default function DashboardOverview() {
                     </div>
                     <StripeStatusIndicator />
                 </div>
-                {pageMessage && (
-                    <div className="errmsg">
-                        <p>
-                            {pageMessage.text}
-                        </p>
-                    </div>
-                )}
+                
                 {'queued' === historySyncStatus ?
                     <>
                         <div className="card p-8 text-center">

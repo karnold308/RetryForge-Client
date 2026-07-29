@@ -1,8 +1,47 @@
 import '../../styles/Dashboard.css'
 import useAxiosPrivate from '../../hooks/useAxiosPrivate'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
 export default function DashboardNotConnected() {
     const axiosPrivate = useAxiosPrivate()
+    const [searchParams] = useSearchParams()
+    const [pageMessage, setPageMessage] = useState<{
+        type: "success" | "error"
+        text: string
+    } | null>(null)
+
+
+    useEffect(() => {
+        const stripeConnect = searchParams.get("stripe")
+        if (!stripeConnect) {
+
+            console.log('here')
+            return
+        }
+
+        console.log('here')
+        switch (stripeConnect) {
+            case 'expired':
+                setPageMessage({
+                    type: "error",
+                    text: "Your Stripe connection session expired. Please click Connect Stripe again."
+                })
+
+                searchParams.delete("stripe")
+                window.history.replaceState({}, "", "/dashboard")
+                break
+            case 'error':
+                setPageMessage({
+                    type: "error",
+                    text: "There was an error connecting your Stripe account. Please click Connect Stripe again or email support"
+                })
+
+                searchParams.delete("stripe")
+                window.history.replaceState({}, "", "/dashboard")
+                break
+        }
+    }, [])
     const connectStripe = async () => {
         try {
             const resp = await axiosPrivate.get("/api/stripe/connect")
@@ -38,6 +77,13 @@ export default function DashboardNotConnected() {
                         Welcome back 👋
                     </div>
                 </header>
+                {pageMessage && (
+                    <div className="errmsg">
+                        <p>
+                            {pageMessage.text}
+                        </p>
+                    </div>
+                )}
                 {/* Connect Stripe Card */}
                 <section className="connect-card pb-24 border-t border-gray-200/70">
                     <div className="connect-content">

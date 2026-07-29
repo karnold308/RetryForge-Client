@@ -1,7 +1,7 @@
 
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { trackPageView } from '../../utils/analytics'
-import { useLocation, useOutletContext, useSearchParams } from 'react-router-dom'
+import { useLocation, useOutletContext } from 'react-router-dom'
 import { useEffect, useRef } from 'react'
 
 import {

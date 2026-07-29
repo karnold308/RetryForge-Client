@@ -1,6 +1,6 @@
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect } from "react"
 import { useLocation, useNavigate, useSearchParams } from "react-router-dom"
 import { trackPageView } from "../../utils/analytics"
 import { useResetPassword } from "../../hooks/dashboard/mutations"
@@ -23,8 +23,7 @@ export default function ResetPassword() {
     const [matchPwd, setMatchPwd] = useState('')
     const [validMatch, setValidMatch] = useState(false)
     const [matchFocus, setMatchFocus] = useState(false)
-    const [errMsg, setErrMsg] = useState('')
-    const errRef = useRef<HTMLParagraphElement | null>(null)
+    // const errRef = useRef<HTMLParagraphElement | null>(null)
     const [searchParams] = useSearchParams()
     const navigate = useNavigate()
     const token = searchParams.get("token")
@@ -32,10 +31,6 @@ export default function ResetPassword() {
     const {
         mutate: resetPassword,
         isPending,
-        isSuccess,
-        isError,
-        data,
-        error
     } = useResetPassword()
 
     const [mode, setMode] = useState<ResetPasswordMode>("form")
@@ -84,7 +79,8 @@ export default function ResetPassword() {
 
                         setPageMessage({
                             type: "error",
-                            text: "This password reset link is invalid."
+                            text: error.response?.data?.message ??
+                                "This password reset link is invalid."
                         })
 
                         return
@@ -95,7 +91,8 @@ export default function ResetPassword() {
 
                         setPageMessage({
                             type: "error",
-                            text: "This password reset link has expired."
+                            text: error.response?.data?.message ??
+                                "This password reset link has expired."
                         })
 
                         return
@@ -105,17 +102,19 @@ export default function ResetPassword() {
                         setMode("same")
                         setPageMessage({
                             type: "error",
-                            text: "Your new password must be different from your current password."
+                            text: error.response?.data?.message ??
+                                "Your new password must be different from your current password."
                         })
 
                         return
                     }
 
 
-                    setErrMsg(
-                        error.response?.data?.message ??
-                        "Unable to reset password."
-                    )
+                    setPageMessage({
+                        type: "error",
+                        text: error.response?.data?.message ??
+                            "Unable to reset password."
+                    })
                 }
             })
     }
@@ -126,9 +125,6 @@ export default function ResetPassword() {
         setValidMatch(match)
     }, [pwd, matchPwd])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [pwd, matchPwd])
 
     useEffect(() => {
         const pageTitle = document.title
@@ -142,10 +138,10 @@ export default function ResetPassword() {
                     <title>RetryForge - Reset Password</title>
                     <main className="px-6 pt-12 xs:max-w-72">
                         {pageMessage && (
-                        <div className="errmsg">
-                            {pageMessage.text}
-                        </div>
-                    )}
+                            <div className="errmsg">
+                                {pageMessage.text}
+                            </div>
+                        )}
                         <div className="signup-field xs:max-w-72">
                             <form onSubmit={handleResetPasswordSubmit}>
                                 <div className="signup-field">

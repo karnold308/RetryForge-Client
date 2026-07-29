@@ -69,6 +69,7 @@
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    align-items: start;
 }
 
 @media (min-width: 1024px) {

@@ -177,7 +177,7 @@ export default function Login() {
         trackPageView(location.pathname, pageTitle)
     }, [location])
 
-    async function handleSubmit(prevState: FormState, formData: FormData):
+    async function handleSubmit(_prevState: FormState, formData: FormData):
         Promise<FormState> {
         const email = formData.get('email') as string
         const password = formData.get('password') as string
@@ -263,7 +263,7 @@ export default function Login() {
         }
     }
 
-    const [state, submitAction, isPending] = useActionState(handleSubmit, {
+    const [_state, submitAction, isPending] = useActionState(handleSubmit, {
         success: false,
         message: null,
     })

@@ -196,7 +196,7 @@ export function useChangePassword() {
     
     return useMutation<
         AxiosResponse<ForgotPasswordSuccess>,
-        AxiosError<ApiError>,
+        AxiosError<ApiErrorResponse>,
         ChangePasswordRequest
     >({
         mutationFn: ({currentPassword, newPassword}) =>

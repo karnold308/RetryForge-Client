@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { faCheck, faTimes, faInfoCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useChangePassword } from "../hooks/dashboard/mutations"
+import { AUTH_ERRORS } from "../models/types"
 
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 
@@ -33,9 +34,6 @@ export default function ChangePasswordForm() {
         setValidMatch(newPassword === confirmPassword)
     }, [newPassword, confirmPassword])
 
-    useEffect(() => {
-        setFormMessage(null)
-    }, [currentPassword, newPassword, confirmPassword])
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
@@ -47,6 +45,10 @@ export default function ChangePasswordForm() {
             },
             {
                 onSuccess: (response) => {
+                    setCurrentPassword("")
+                    setNewPassword("")
+                    setConfirmPassword("")
+
                     setFormMessage({
                         type: "success",
                         text:
@@ -54,16 +56,35 @@ export default function ChangePasswordForm() {
                             "Password updated successfully.",
                     })
 
-                    setCurrentPassword("")
-                    setNewPassword("")
-                    setConfirmPassword("")
+
                 },
 
                 onError: (error) => {
+                    const code = error.response?.data?.code
+
+                    if (code === AUTH_ERRORS.PASSWORD_SAME_AS_CURRENT) {
+                        setFormMessage({
+                            type: "error",
+                            text: error.response?.data?.message ??
+                                "Your new password must be different from your current password."
+                        })
+
+                        return
+                    }
+
+                    if (code === AUTH_ERRORS.CURRENT_PASSWORD_WRONG) {
+                        setFormMessage({
+                            type: "error",
+                            text: error.response?.data?.message ??
+                                "Your existing password is incorrect."
+                        })
+
+                        return
+                    }
+
                     setFormMessage({
                         type: "error",
-                        text:
-                            error.response?.data?.message ??
+                        text: error.response?.data?.message ??
                             "Unable to change password.",
                     })
 
@@ -85,9 +106,10 @@ export default function ChangePasswordForm() {
                     type="password"
                     autoComplete="current-password"
                     value={currentPassword}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                        setFormMessage(null)
                         setCurrentPassword(e.target.value)
-                    }
+                    }}
                     required
                 />
             </div>
@@ -122,9 +144,10 @@ export default function ChangePasswordForm() {
                     type="password"
                     autoComplete="new-password"
                     value={newPassword}
-                    onChange={(e) =>
+                    onChange={(e) => {
+                        setFormMessage(null)
                         setNewPassword(e.target.value)
-                    }
+                    }}
                     onFocus={() => setNewPasswordFocus(true)}
                     onBlur={() => setNewPasswordFocus(false)}
                     aria-invalid={
@@ -138,7 +161,7 @@ export default function ChangePasswordForm() {
                     id="pwdnote"
                     className={
                         newPasswordFocus &&
-                        !validNewPassword
+                            !validNewPassword
                             ? "instructions signUpInstructions"
                             : "offscreen"
                     }
@@ -162,7 +185,7 @@ export default function ChangePasswordForm() {
                     <span
                         className={
                             validMatch &&
-                            confirmPassword
+                                confirmPassword
                                 ? "valid"
                                 : "hide"
                         }
@@ -186,11 +209,10 @@ export default function ChangePasswordForm() {
                     type="password"
                     autoComplete="new-password"
                     value={confirmPassword}
-                    onChange={(e) =>
-                        setConfirmPassword(
-                            e.target.value
-                        )
-                    }
+                    onChange={(e) => {
+                        setFormMessage(null)
+                        setConfirmPassword(e.target.value)
+                    }}
                     onFocus={() => setConfirmFocus(true)}
                     onBlur={() => setConfirmFocus(false)}
                     aria-invalid={

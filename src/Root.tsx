@@ -5,7 +5,6 @@ import useAuth from './hooks/useAuth'
 import App from "./App"
 import PrivacyPolicy from "./components/pages/PrivacyPolicy"
 import NoMatch from "./components/pages/404"
-import Demo from "./components/pages/Demo"
 import SignUp from "./components/pages/SignUp"
 import TermsAndConditions from "./components/pages/Terms"
 import Cookies from "./components/pages/Cookies"

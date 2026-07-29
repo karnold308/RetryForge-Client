@@ -1,16 +1,15 @@
 import StripeStatusIndicator from '../StripeStatusIndicator'
 import { useEffect, useState } from 'react'
 import { trackPageView } from '../../utils/analytics'
-import { useLocation, useOutletContext } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { formatFullStripeCurrency, formatFailure } from '../../utils/formatters'
 import '../../styles/DashboardRecoveries.css'
 import { useRecoveries, useRecoveryDetails } from '../../hooks/dashboard/queries'
-import { DashboardRecovery, MeResponse } from '../../models/types'
+import { DashboardRecovery } from '../../models/types'
 import { useRetryRecovery } from '../../hooks/dashboard/mutations'
 
 
 export default function DashboardRecoveries() {
-    const { me } = useOutletContext<{ me: MeResponse | undefined }>()
     const location = useLocation()
     const [selectedRecoveryId, setSelectedRecoveryId] = useState<string | null>(null)
     const recoveriesQuery = useRecoveries()

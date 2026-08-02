@@ -30,7 +30,7 @@ const useLogout = () => {
         } catch (e) {
             console.log(e)
         } finally {
-            navigate('/', {
+            navigate('/login', {
                 replace: true,
                 state: isTimeout ? { reason: 'timeout' } : undefined
             })

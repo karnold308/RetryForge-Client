@@ -1,48 +1,48 @@
 import { Dispatch, SetStateAction } from 'react'
 
 export interface SolutionFeature {
-  title: string
-  icon: string
+    title: string
+    icon: string
 }
 
 export interface LostMMR {
-  mrr: number,
-  failedRevenue: number
-  recoverable: number
-  weRecover: number
-  weCharge: number
-  netGain: number
+    mrr: number,
+    failedRevenue: number
+    recoverable: number
+    weRecover: number
+    weCharge: number
+    netGain: number
 }
 
 export interface FAQ {
-  question: string
-  answer: string
+    question: string
+    answer: string
 }
 
 export interface AuthData {
-  userId: number
-  email: string
-  roles: number[]
-  accessToken: string
-  stripeConnected?: boolean
-  customerId?: string
-  subscriptionTier?: 'free' | 'starter' | 'pro'
-  onboardingComplete?: boolean
-  emailVerified?: boolean
-  profileImageUrl?: string
+    userId: number
+    email: string
+    roles: number[]
+    accessToken: string
+    stripeConnected?: boolean
+    customerId?: string
+    subscriptionTier?: 'free' | 'starter' | 'pro'
+    onboardingComplete?: boolean
+    emailVerified?: boolean
+    profileImageUrl?: string
 }
 
 export interface AuthContextType {
-  auth: AuthData | null
-  setAuth: Dispatch<SetStateAction<AuthData | null>>
-  persist: boolean
-  setPersist: Dispatch<SetStateAction<boolean>>
+    auth: AuthData | null
+    setAuth: Dispatch<SetStateAction<AuthData | null>>
+    persist: boolean
+    setPersist: Dispatch<SetStateAction<boolean>>
 }
 
 export interface FormState {
-  success: boolean
-  message: string | null
-  errors?: any
+    success: boolean
+    message: string | null
+    errors?: any
 }
 
 export interface StripeInfo {
@@ -166,14 +166,14 @@ export interface AtRiskCustomers {
 }
 
 export interface TopOpportunities {
-  id: string
-  email: string
-  name: string
-  totalAtRisk: number
-  activeFailures: number
-  lastFailedAt: string
-  score: number
-  topCaseId: string
+    id: string
+    email: string
+    name: string
+    totalAtRisk: number
+    activeFailures: number
+    lastFailedAt: string
+    score: number
+    topCaseId: string
 }
 
 export interface ResendVerificationSuccess {
@@ -215,5 +215,26 @@ export interface ResetPasswordRequest {
 export interface ChangePasswordRequest {
     currentPassword: string
     newPassword: string
+}
+
+export interface ErrorLog {
+    id: string
+    created_at: string
+    level: string
+    source: string
+    message: string
+    user_id: string | null
+    stripe_account_uuid: string | null
+    user: {
+        email: string
+    } | null
+    stripeAccount: {
+        stripe_account_id: string
+    } | null
+    metadata: {
+        error?: string
+        stack?: string
+        [key: string]: unknown
+    }
 }
 

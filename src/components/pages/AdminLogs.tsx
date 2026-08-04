@@ -95,7 +95,7 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 bg-white">
-                        {adminLogs?.map((log: ErrorLog, index: number) => (
+                        {adminLogs?.map((log: ErrorLog) => (
                             <tr key={log.id}>
                                 <td className="px-4 py-3 text-sm whitespace-nowrap">
                                     {new Date(log.created_at)

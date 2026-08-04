@@ -27,7 +27,7 @@ import ConnectError from "./components/pages/ConnectError"
 import ResendVerification from "./components/pages/ResendVerification.tsx"
 import ResetPassword from "./components/pages/ResetPassword.tsx"
 import AdminLogs from "./components/pages/AdminLogs.tsx"
-
+import CookieBanner from "./components/CookieBanner"
 
 function Root() {
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -133,7 +133,10 @@ function Root() {
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
             </IdleTimeoutProvider>
+            <CookieBanner />
         </BrowserRouter>
+
+        
     )
 }
 

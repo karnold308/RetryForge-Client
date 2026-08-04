@@ -65,7 +65,7 @@ export default function DashboardAnalytics() {
                             <span>{analytics.recoveryRate}%</span>
                         </div>
                     </div>
-                    <div className="dashboard-card">
+                    <div className="dashboard-card mb-6">
                         <h2>Failure Reasons</h2>
                         <table>
                             <thead>

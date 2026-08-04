@@ -42,34 +42,53 @@ export default function DashboardOverviewTopOpportunities({ opportunities }: Top
                 {opportunities?.map((c: TopOpportunities, index: number) => (
                     <div
                         key={c.id}
-                        className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 transition"
+                        className="
+                            flex
+                            flex-col
+                            gap-4
+                            p-4
+                            border
+                            rounded-lg
+                            hover:bg-gray-50
+                            transition
+                            md:grid
+                            md:grid-cols-[minmax(0,1fr)_150px_110px]
+                            md:items-center"
                     >
-                        <div className="flex items-center gap-4">
-                            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-black text-white text-sm">
+                        <div className="flex items-center gap-4 min-w-0">
+                            <div className="w-8 h-8 flex items-center justify-center rounded-full bg-black text-white text-sm flex-shrink-0">
                                 {index + 1}
                             </div>
-                            <div>
-                                <div className="font-medium">
+                            <div className="min-w-0">
+                                <div className="font-medium truncate">
                                     {c.name || "Unknown"}
                                 </div>
-                                <div className="text-sm text-gray-500">
+                                <div className="text-sm text-gray-500 truncate">
                                     {c.email}
                                 </div>
                             </div>
                         </div>
-                        <div className="text-right">
+                        <div className="text-left md:text-right">
                             <div className="font-semibold">
                                 ${formatStripeCurrency(c.totalAtRisk)}
                             </div>
                             <div className="text-xs text-gray-500">
-                                {c.activeFailures} failures •
-                                Score {c.score.toFixed(0)}
+                                {c.activeFailures} failures • Score {c.score.toFixed(0)}
                             </div>
                         </div>
                         <button
                             onClick={() => handleRetry(c.topCaseId)}
                             disabled={retryingId === c.topCaseId}
-                            className="px-3 py-1 text-xs bg-black text-white rounded disabled:opacity-50"
+                            className="justify-self-end
+                                    px-3
+                                    py-1
+                                    text-xs
+                                    bg-black
+                                    text-white
+                                    rounded
+                                    disabled:opacity-50
+                                    md:w-auto
+                                    md:justify-self-end"
                         >
                             {retryingId === c.topCaseId ? "Retrying..." : "Retry Now"}
                         </button>

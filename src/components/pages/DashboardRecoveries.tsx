@@ -55,17 +55,17 @@ export default function DashboardRecoveries() {
 
 
     return (
-        <>
-            <div className="page">
-                <div className="page-header grid md:grid-cols-2">
-                    <div>
-                        <h1>Recoveries</h1>
-                        <p>Monitor payment recovery attempts.</p>
-                    </div>
-                    <StripeStatusIndicator />
+        <div className="page">
+            <div className="page-header grid md:grid-cols-2">
+                <div>
+                    <h1>Recoveries</h1>
+                    <p>Monitor payment recovery attempts.</p>
                 </div>
+                <StripeStatusIndicator />
+            </div>
 
-                <div className="table-card">
+            <div className="table-card">
+                <div className="hidden md:block table-card">
                     <table>
                         <thead>
                             <tr>
@@ -125,6 +125,7 @@ export default function DashboardRecoveries() {
                                                         View
                                                     </a>
                                                     */}
+                                                    <div className="flex gap-2">
                                                     <button
                                                         onClick={() => handleRowClick(r.id)}
                                                     >
@@ -135,11 +136,12 @@ export default function DashboardRecoveries() {
                                                         onClick={() => handleRetry(r.id)}
                                                         disabled={retryingId === r.id}
                                                     >
-                                                        {'recovered' !== r.status ? 
+                                                        {'recovered' !== r.status ?
                                                             (retryingId === r.id ? "\u00A0/\u00A0Retrying..." : "\u00A0/\u00A0Retry")
-                                                            : '' }
-                                                        
+                                                            : ''}
+
                                                     </button>
+                                                    </div>
                                                 </>
                                             )}
                                         </td>
@@ -148,6 +150,77 @@ export default function DashboardRecoveries() {
                             )}
                         </tbody>
                     </table>
+                </div>
+                <div className="md:hidden space-y-3">
+                    <div className="md:hidden">
+                        {isLoading ? (
+                            <div>Loading...</div>
+                        ) : recoveries.length === 0 ? (
+                            <div>No failed invoices found.</div>
+                        ) : (
+                            recoveries.map((r: DashboardRecovery) => (
+                                <div
+                                    key={r.id}
+                                    className="rounded-lg border bg-white p-4 shadow-sm mb-6"
+                                >
+                                    <div className="flex justify-between items-start">
+                                        <div className="min-w-0">
+                                            <div className="font-medium truncate">
+                                                {r.customer}
+                                            </div>
+
+                                            <div className="text-sm text-gray-500">
+                                                {formatFailure(r.failureReason)}
+                                            </div>
+
+                                            <div className="text-xs text-gray-400 mt-1">
+                                                {new Date(r.failedDate).toLocaleDateString()}
+                                            </div>
+                                        </div>
+
+                                        <div className="text-right ml-4 flex-shrink-0">
+                                            <div className={`font-semibold ${r.amount > 10000
+                                                ? "text-red-600"
+                                                : "text-gray-900"
+                                                }`}>
+                                                {formatFullStripeCurrency(r.amount)}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="mt-3 flex items-center justify-between">
+                                        <div className="text-sm">
+                                            Attempts: <strong>{r.attempts}</strong>
+                                        </div>
+
+                                        <span className={`px-2 py-1 text-xs rounded-full border ${statusStyles[r.status]}`}>
+                                            {r.status}
+                                        </span>
+                                    </div>
+
+                                    <div className="mt-4 flex gap-2">
+                                        <button
+                                            className="flex-1"
+                                            onClick={() => handleRowClick(r.id)}
+                                        >
+                                            Details
+                                        </button>
+
+                                        {r.status !== "recovered" && (
+                                            <button
+                                                className="flex-1"
+                                                onClick={() => handleRetry(r.id)}
+                                                disabled={retryingId === r.id}
+                                            >
+                                                {retryingId === r.id
+                                                    ? "Retrying..."
+                                                    : "Retry"}
+                                            </button>
+                                        )}
+                                    </div>
+                                </div>
+                            )))}
+                    </div>
                 </div>
                 {/*
                 {recoveryDetailsQuery.isPending && (
@@ -170,7 +243,7 @@ export default function DashboardRecoveries() {
                                 className="drawer-close"
                                 onClick={() => setSelectedRecoveryId(null)}
                             >
-                                ×
+                                x
                             </button>
 
                             <h2>Recovery Details</h2>
@@ -205,6 +278,6 @@ export default function DashboardRecoveries() {
                     </>
                 )}
             </div>
-        </>
+        </div>
     )
 }

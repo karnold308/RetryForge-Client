@@ -8,3 +8,7 @@ export const dashboardKeys = {
     recoveries: ['dashboard', 'recoveries'] as const,
     recoveryDetails: (id: string) => ["dashboard", "recovery", id] as const,
 }
+
+export const adminKeys = {
+    adminLogs: ['adminLogs', 'index'] as const,
+}

@@ -15,12 +15,9 @@ export default function DashboardNotConnected() {
     useEffect(() => {
         const stripeConnect = searchParams.get("stripe")
         if (!stripeConnect) {
-
-            console.log('here')
             return
         }
 
-        console.log('here')
         switch (stripeConnect) {
             case 'expired':
                 setPageMessage({

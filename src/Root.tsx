@@ -26,7 +26,8 @@ import DashboardSettings from "./components/pages/DashboardSettings"
 import ConnectError from "./components/pages/ConnectError"
 import ResendVerification from "./components/pages/ResendVerification.tsx"
 import ResetPassword from "./components/pages/ResetPassword.tsx"
-
+import AdminLogs from "./components/pages/AdminLogs.tsx"
+import CookieBanner from "./components/CookieBanner"
 
 function Root() {
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -91,7 +92,7 @@ function Root() {
 
     return (
         <BrowserRouter>
-            <IdleTimeoutProvider timeoutInMinutes={30}>
+            <IdleTimeoutProvider timeoutInMinutes={14}>
                 <Navbar />
                 <Routes>
                     {/* public routes */}
@@ -113,6 +114,7 @@ function Root() {
 
 
                     {/* protected routes */}
+                    <Route path="/admin/logs" element={<AdminLogs allowedRoles={[ROLES[7777]]}/>}  />
                     <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
                         <Route path="/connect/error" element={<ConnectError /> } />
                         {/* allowed roles ex.:   allowedRoles={[ROLES.Manager, ROLES.Admin]}  */}
@@ -131,7 +133,10 @@ function Root() {
                     <Route path="*" element={<NoMatch />} />
                 </Routes>
             </IdleTimeoutProvider>
+            <CookieBanner />
         </BrowserRouter>
+
+        
     )
 }
 

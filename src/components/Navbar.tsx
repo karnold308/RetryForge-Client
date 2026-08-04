@@ -50,7 +50,7 @@ export default function Navbar() {
                     </Link>
                 </div>
 
-                <div className="nav-links desktop-nav hidden flex md:flex items-center gap-4">
+                <div className="nav-links desktop-nav hidden flex lg:flex items-center gap-4">
                     {/*  <a href="/" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition duration-200 ease-in-out">Home</a> */}
                     <Link to="/#features" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition-colors transition hover:bg-gray-100 duration-200 ease-in-out">Features</Link>
                     <Link to="/#howItWorks" className="px-3.5 py-2 rounded-md text-gray-700 no-underline transition transition hover:bg-gray-100 duration-200 ease-in-out">How It Works</Link>
@@ -78,7 +78,7 @@ export default function Navbar() {
                 <button
                     ref={mobileButtonRef}
                     type="button"
-                    className="md:hidden text-2xl px-3 py-2 ml-auto"
+                    className="lg:hidden text-2xl px-3 py-2 ml-auto"
                     onClick={() => setMobileOpen(!mobileOpen)}>
                     ☰
                 </button>
@@ -87,7 +87,7 @@ export default function Navbar() {
             {/* Mobile Dropdown */}
 
             {mobileOpen && (
-                <div className="md:hidden absolute top-16 left-0 w-full bg-white border-t border-gray-200 flex flex-col gap-4 p-6" ref={mobileMenuRef}>
+                <div className="lg:hidden absolute items-start top-16 left-0 w-full bg-white border-t border-gray-200 flex flex-col gap-4 p-6" ref={mobileMenuRef}>
                     <Link to="/#features" onClick={() => setMobileOpen(false)}>Features</Link>
                     <Link to="/#howItWorks" onClick={() => setMobileOpen(false)}>How It Works</Link>
 

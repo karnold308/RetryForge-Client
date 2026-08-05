@@ -10,7 +10,7 @@ interface IdleTimeoutProviderProps {
     timeoutInMinutes?: number
 }
 
-export function IdleTimeoutProvider({ children, timeoutInMinutes = 14 }: IdleTimeoutProviderProps) {
+export function IdleTimeoutProvider({ children, timeoutInMinutes = 1 }: IdleTimeoutProviderProps) {
     const { auth } = useAuth()
     const logout = useLogout()
     const isLoggingOutRef = useRef(false)

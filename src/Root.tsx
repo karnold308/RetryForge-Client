@@ -92,7 +92,7 @@ function Root() {
 
     return (
         <BrowserRouter>
-            <IdleTimeoutProvider timeoutInMinutes={14}>
+            <IdleTimeoutProvider timeoutInMinutes={1}>
                 <Navbar />
                 <Routes>
                     {/* public routes */}

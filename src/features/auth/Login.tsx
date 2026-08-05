@@ -18,7 +18,7 @@ export default function Login() {
     const navigate = useNavigate()
     const userRef = useRef<HTMLInputElement | null>(null)
     const errRef = useRef<HTMLParagraphElement | null>(null)
-    const [user, setUser] = useState('')
+    let [user, setUser] = useState('')
     const [pwd, setPwd] = useState('')
     // const [errMsg, setErrMsg] = useState('')
     // const [successMsg, setSuccessMsg] = useState("")
@@ -147,6 +147,7 @@ export default function Login() {
 
     const handleResendVerification = async () => {
         try {
+            user = user.trim().toLowerCase()
             const response = await axios.post(
                 "/resend-verification",
                 {
@@ -179,7 +180,8 @@ export default function Login() {
 
     async function handleSubmit(prevState: FormState, formData: FormData):
         Promise<FormState> {
-        const email = formData.get('email') as string
+        let email = formData.get('email') as string
+        email = email.trim().toLowerCase()
         const password = formData.get('password') as string
 
         const isDeviceTrusted = localStorage.getItem('persist') === 'true'

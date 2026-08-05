@@ -80,10 +80,12 @@ export default function SignUp() {
         _prevState: FormState,
         formData: FormData
     ): Promise<FormState> {
-        const email = formData.get("email") as string
+        let email = formData.get("email") as string
         const company = formData.get("company") as string
         const pWord = formData.get("password") as string
         const matchPwd = formData.get("matchPwd") as string
+
+        email = email.trim().toLowerCase()
 
         const v1 = USER_REGEX.test(user)
         const v2 = PWD_REGEX.test(pwd)

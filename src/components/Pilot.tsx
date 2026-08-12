@@ -9,7 +9,7 @@ export default function Pilot() {
     return loggedIn ? <></> : (
         <>
             <section className=" relative m-auto border border-blue-200 p-4 pb-20 mb-12 xs:py-6 xs:pl-4 xs:pr-4
-            overflow-hidden rounded-2xl py-20 max-w-5xl items-center rounded-4xl md:ml-10 md:mr-10 pl-16 pr-16
+            overflow-hidden rounded-2xl py-20 max-w-5xl items-center rounded-4xl pl-16 pr-16
             before:content-[''] before:absolute before:top-0 before:left-0 before:w-full 
             before:h-1 before:bg-[linear-gradient(90deg,#4f46e5,#818cf8)]
             bg-[radial-gradient(circle_at_top_left,rgba(79,70,229,0.10),transparent_35%),linear-gradient(to_bottom_right,#FFFFFF,#F8FAFC)]">

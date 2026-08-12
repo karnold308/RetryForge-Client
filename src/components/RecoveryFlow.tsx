@@ -14,7 +14,7 @@ export default function RecoveryFlow() {
                             From failed payment to recovered revenue — fully automated.
                         </p>
                     </div>
-                    <div className="grid md:grid-cols-5 xs:grid-cols-1 gap-6 relative">
+                    <div className="grid lg:grid-cols-5 xs:grid-cols-1 gap-6 relative">
                         <div className="relative bg-white border border-[#E5E7EB] rounded-[18px] p-7 wrap-break-word transition-all duration-250 ease-out overflow-hidden
                             transition duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(0,0,0,0.04),_0_12px_24px_rgba(0,0,0,0.06),_0_24px_48px_rgba(0,0,0,0.04)]">
                             <div className="w-[42px] h-[42px] rounded-full bg-indigo-600/10 text-indigo-600 flex items-center justify-center font-bold mb-[18px] shadow-[0_0_0_6px_rgba(79,70,229,0.05)]">

@@ -374,6 +374,7 @@ export default function Login() {
                                         type="email" name="email" id="email"
                                         placeholder="you@company.com"
                                         required
+                                        tabIndex={1}
                                         value={user}
                                         onChange={(e) => setUser(e.target.value)}
                                     />
@@ -381,7 +382,7 @@ export default function Login() {
                                 <div className="auth-field">
                                     <div className="auth-password-row">
                                         <label htmlFor="password">Password</label>
-                                        <Link to="/forgot-password">
+                                        <Link to="/forgot-password" tabIndex={3}>
                                             Forgot password?
                                         </Link>
                                     </div>
@@ -389,6 +390,7 @@ export default function Login() {
                                         placeholder="Enter your password"
                                         id="password"
                                         required
+                                        tabIndex={2}
                                         onChange={(e) => setPwd(e.target.value)}
                                         value={pwd}
                                     />
@@ -425,13 +427,14 @@ export default function Login() {
                                     </p>
                                 )}
                                 */}
-                                <button type="submit" className="auth-submit-btn">
+                                <button type="submit" className="auth-submit-btn" tabIndex={3}>
                                     {isPending === true ? 'Signing In..' : 'Sign In'}
                                 </button>
                                 <div className="persistCheck">
                                     <input
                                         type="checkbox"
                                         id="persist"
+                                        tabIndex={4}
                                         onChange={togglePersist}
                                         checked={persist}
                                     />
@@ -450,7 +453,7 @@ export default function Login() {
 
                             <p className="auth-footer">
                                 Don't have an account?
-                                <Link to="/signup"> Start free trial</Link>
+                                <Link to="/signup" tabIndex={5}> Start free trial</Link>
                             </p>
                         </div>
 

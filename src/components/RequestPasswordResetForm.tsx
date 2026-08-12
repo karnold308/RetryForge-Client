@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useForgotPassword } from "../hooks/dashboard/mutations"
 
 interface Props {
@@ -9,20 +9,25 @@ export default function RequestPasswordResetForm({
     heading
 }: Props) {
     const [email, setEmail] = useState("")
+    const emailRef = useRef<HTMLInputElement | null>(null)
 
     const {
-            mutate: forgotPassword,
-            isPending,
-            isSuccess,
-            isError,
-            data,
-            error
-        } = useForgotPassword()
+        mutate: forgotPassword,
+        isPending,
+        isSuccess,
+        isError,
+        data,
+        error
+    } = useForgotPassword()
 
-    
+
     const handleSubmit = () => {
         forgotPassword(email)
     }
+
+    useEffect(() => {
+        if (emailRef.current) emailRef.current.focus()
+    }, [])
 
     return (
         <>
@@ -37,6 +42,7 @@ export default function RequestPasswordResetForm({
                     </label>
                     <input
                         id="email"
+                        ref={emailRef}
                         autoComplete="off"
                         name="email"
                         value={email}

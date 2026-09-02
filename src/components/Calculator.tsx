@@ -21,7 +21,7 @@ export default function Calculator() {
         const failureRate = inputFailedRate / 100;
         const recoveryRate = inputRecovRate / 100;
         const feeRate = 0.05;
-        const failRevenue = Number(inputMMRValue) * failureRate;
+        const failRevenue = Number(inputMMRValue) * 12 * failureRate;
         const weRecov = failRevenue * recoveryRate;
         const ourFee = (49 * 12) + weRecov * feeRate;
         const totalGain = weRecov - ourFee;

@@ -23,7 +23,7 @@ export default function Calculator() {
         const feeRate = 0.05;
         const failRevenue = Number(inputMMRValue) * failureRate;
         const weRecov = failRevenue * recoveryRate;
-        const ourFee = 49 + weRecov * feeRate;
+        const ourFee = (49 * 12) + weRecov * feeRate;
         const totalGain = weRecov - ourFee;
 
         setCalcResult({
@@ -141,7 +141,7 @@ export default function Calculator() {
                                         +${null != calcResult ? formatCompactNumber(calcResult.recoverable) : 0}/yr
                                     </strong>
                                     <p className="mt-2.5 text-sm text-gray-500">
-                                        ≈ +${null != calcResult ? formatCurrency(calcResult.netGain) : 0}/mo net after fees
+                                        ≈ +${null != calcResult ? formatCurrency(calcResult.netGain) : 0}/yr net after fees
                                     </p>
                                 </div>
                             </div>

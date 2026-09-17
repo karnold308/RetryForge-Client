@@ -53,8 +53,8 @@ export function useRecoveryDetails(id: string | null) {
 }
 
 
-export function useAdminLogs() {
+export function useAdminLogs(enabled = true) {
     const axiosPrivate = useAxiosPrivate()
-    return useQuery({ queryKey: adminKeys.adminLogs, queryFn: () => getAdminLogs(axiosPrivate) })
+    return useQuery({ queryKey: adminKeys.adminLogs, queryFn: () => getAdminLogs(axiosPrivate), enabled })
 }
 

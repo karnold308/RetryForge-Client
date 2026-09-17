@@ -15,14 +15,12 @@ interface AdminLogsProps {
 }
 
 
+
 export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
     const { auth } = useAuth()
     const location = useLocation()
     const [selectedLog, setSelectedLog] = useState<ErrorLog | null>(null)
-    let adminLogsQuery
-    let isLoading
-    let adminLogs
-    let isError
+
     const numericRoles = Array.isArray(auth?.roles)
         ? auth.roles
         : []
@@ -33,13 +31,26 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
         name && allowedRoles.includes(name as RoleName)
     )
 
-    if (hasRequiredRole) {
-        adminLogsQuery = useAdminLogs()
-        isLoading = adminLogsQuery.isPending
-        adminLogs = adminLogsQuery.data
-        isError = adminLogsQuery.isError
-    }
+    const adminLogsQuery = useAdminLogs(hasRequiredRole)
 
+    const isLoading = hasRequiredRole && adminLogsQuery.isPending
+    const adminLogs = adminLogsQuery.data ?? []
+    const isError = hasRequiredRole && adminLogsQuery.isError
+    // let adminLogsQuery
+    // let isLoading
+    // let adminLogs
+    // let isError
+
+
+    if (!isAuthenticated(auth) || !hasRequiredRole) {
+        return (
+            <Navigate
+                to="/dashboard"
+                state={{ from: location }}
+                replace
+            />
+        )
+    }
 
     if (isLoading) {
         return (
@@ -49,7 +60,6 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
         )
     }
 
-
     if (isError) {
         return (
             <div className="p-6 text-red-600">
@@ -58,7 +68,7 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
         )
     }
 
-    return isAuthenticated(auth) && hasRequiredRole ? (
+    return (
         <div className="p-6">
             <div className="mb-6">
                 <h1 className="text-2xl font-semibold">
@@ -236,8 +246,5 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
             )}
         </div>
 
-    ) : (
-        <Navigate to="/dashboard" state={{ from: location }} replace />
     )
-
 }

@@ -33,9 +33,9 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
 
     const adminLogsQuery = useAdminLogs(hasRequiredRole)
 
-    const isLoading = hasRequiredRole && adminLogsQuery.isPending
+    // const isLoading = hasRequiredRole && adminLogsQuery.isPending
     const adminLogs = adminLogsQuery.data ?? []
-    const isError = hasRequiredRole && adminLogsQuery.isError
+    // const isError = hasRequiredRole && adminLogsQuery.isError
     // let adminLogsQuery
     // let isLoading
     // let adminLogs
@@ -52,7 +52,7 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
         )
     }
 
-    if (isLoading) {
+    if (adminLogsQuery.isPending) {
         return (
             <div className="p-6">
                 Loading errors...
@@ -60,7 +60,7 @@ export default function AdminLogs({ allowedRoles }: AdminLogsProps) {
         )
     }
 
-    if (isError) {
+    if (adminLogsQuery.isError) {
         return (
             <div className="p-6 text-red-600">
                 Failed to load error logs.

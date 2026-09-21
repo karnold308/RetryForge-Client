@@ -12,3 +12,7 @@ export const dashboardKeys = {
 export const adminKeys = {
     adminLogs: ['adminLogs', 'index'] as const,
 }
+
+export const sysConfigKeys = {
+    sysConfig: ['sysConfig', 'index'] as const,
+}

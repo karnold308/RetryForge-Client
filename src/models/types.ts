@@ -238,3 +238,13 @@ export interface ErrorLog {
     }
 }
 
+export interface SysConfig {
+    id: string
+    config_name: string
+    config_value: string
+    last_updated_user_uuid: string
+    updated_at: string
+}
+
+
+

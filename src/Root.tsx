@@ -28,6 +28,7 @@ import ResendVerification from "./components/pages/ResendVerification.tsx"
 import ResetPassword from "./components/pages/ResetPassword.tsx"
 import AdminLogs from "./components/pages/AdminLogs.tsx"
 import CookieBanner from "./components/CookieBanner"
+import SysConfig from "./components/pages/SysConfig.tsx"
 
 function Root() {
     const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -115,6 +116,7 @@ function Root() {
 
                     {/* protected routes */}
                     <Route path="/admin/logs" element={<AdminLogs allowedRoles={[ROLES[7777]]}/>}  />
+                    <Route path="/admin/config" element={<SysConfig allowedRoles={[ROLES[7777]]}/>}  />
                     <Route element={<RequireAuth allowedRoles={[...Object.values(ROLES)]} />}>
                         <Route path="/connect/error" element={<ConnectError /> } />
                         {/* allowed roles ex.:   allowedRoles={[ROLES.Manager, ROLES.Admin]}  */}

@@ -5,8 +5,8 @@ import {
     getTopOpportunities, getAnalytics, getCustomers, getRecoveries,
     getRecoveryDetails,
 } from "../../api/dashboardApi"
-import { adminKeys, dashboardKeys } from '../../hooks/dashboard/queryKeys'
-import { getAdminLogs } from "../../api/adminApi"
+import { adminKeys, dashboardKeys, sysConfigKeys } from '../../hooks/dashboard/queryKeys'
+import { getAdminLogs, getSysConfigs } from "../../api/adminApi"
 
 export function useOverview() {
     const axiosPrivate = useAxiosPrivate()
@@ -56,5 +56,10 @@ export function useRecoveryDetails(id: string | null) {
 export function useAdminLogs(enabled = true) {
     const axiosPrivate = useAxiosPrivate()
     return useQuery({ queryKey: adminKeys.adminLogs, queryFn: () => getAdminLogs(axiosPrivate), enabled })
+}
+
+export function useSysConfig(enabled = true) {
+    const axiosPrivate = useAxiosPrivate()
+    return useQuery({ queryKey: sysConfigKeys.sysConfig, queryFn: () => getSysConfigs(axiosPrivate), enabled })
 }
 
